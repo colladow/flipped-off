@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from './GlobalStyles';
 import Screen, { CardDisplay, Nav } from './Screen';
+import Hamburger from './Hamburger';
+import Menu from './Menu';
 
-const FlippedOff = () => (
-  <ThemeProvider theme={{}}>
-    <React.Fragment>
-      <GlobalStyles />
+const FlippedOff = () => {
+  const [hideMenu, setHideMenu] = useState(true);
 
-      <Screen>
-        <CardDisplay>
-          <h1>Current Card</h1>
-        </CardDisplay>
+  return (
+    <ThemeProvider theme={{}}>
+      <React.Fragment>
+        <GlobalStyles />
 
-        <Nav>
-          <h1>Nav</h1>
-        </Nav>
-      </Screen>
-    </React.Fragment>
-  </ThemeProvider>
-);
+        <Hamburger onClick={() => setHideMenu(!hideMenu)} />
+
+        <Screen>
+          <CardDisplay>
+            <h1>Current Card</h1>
+          </CardDisplay>
+
+          <Nav>
+            <h1>Nav</h1>
+          </Nav>
+        </Screen>
+
+        <Menu className={hideMenu && 'hidden'} />
+      </React.Fragment>
+    </ThemeProvider>
+  );
+};
 
 export default FlippedOff;
