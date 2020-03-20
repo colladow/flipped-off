@@ -11,7 +11,7 @@ export const CardDisplay = styled.section`
   display: flex;
   height: 70%;
   box-sizing: border-box;
-  border-bottom: 1px solid #a1a1a1;
+  border-bottom: 1px solid ${props => props.theme.borderColor};
   overflow: hidden;
   align-items: center;
   justify-content: center;

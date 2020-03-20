@@ -4,13 +4,15 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './GlobalStyles';
 import Screen, { CardDisplay, Nav } from './Screen';
 import Hamburger from './Hamburger';
-import Menu from './Menu';
+import Menu, { MenuItem } from './Menu';
+
+import theme from './theme';
 
 const FlippedOff = () => {
   const [hideMenu, setHideMenu] = useState(true);
 
   return (
-    <ThemeProvider theme={{}}>
+    <ThemeProvider theme={theme}>
       <React.Fragment>
         <GlobalStyles />
 
@@ -26,7 +28,11 @@ const FlippedOff = () => {
           </Nav>
         </Screen>
 
-        <Menu className={hideMenu && 'hidden'} />
+        <Menu className={hideMenu && 'hidden'}>
+          <MenuItem>Animals</MenuItem>
+          <MenuItem>Math</MenuItem>
+          <MenuItem>Spanish</MenuItem>
+        </Menu>
       </React.Fragment>
     </ThemeProvider>
   );
