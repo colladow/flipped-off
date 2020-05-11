@@ -3,8 +3,7 @@ import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from './GlobalStyles';
 import Screen, { CardDisplay, Nav } from './Screen';
-import Hamburger from './Hamburger';
-import Menu, { MenuItem } from './Menu';
+import Menu, { MenuItem, Hamburger } from './Menu';
 
 import theme from './theme';
 
@@ -28,7 +27,7 @@ const FlippedOff = () => {
           </Nav>
         </Screen>
 
-        <Menu className={hideMenu && 'hidden'}>
+        <Menu hidden={hideMenu}>
           <MenuItem>Animals</MenuItem>
           <MenuItem>Math</MenuItem>
           <MenuItem>Spanish</MenuItem>

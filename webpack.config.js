@@ -13,7 +13,9 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src/template.html'),
+    }),
   ],
 
   module: {
@@ -32,6 +34,7 @@ module.exports = {
             plugins: [
               '@babel/plugin-proposal-object-rest-spread',
               '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-proposal-export-default-from',
               'babel-plugin-styled-components',
             ],
           },

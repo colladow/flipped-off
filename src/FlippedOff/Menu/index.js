@@ -6,18 +6,18 @@ const Container = styled.section`
   position: fixed;
   top: 0;
   left: 0;
-  width: 30%;
+  width: 40%;
   height: 100%;
   background-color: lightpink;
   z-index: 100;
   border-right: 1px solid ${props => props.theme.borderColor};
   transition: left 300ms ease-in;
   box-sizing: border-box;
-  padding-top: 20%;
+  padding-top: 25%;
   padding-bottom: 5%;
 
   &.hidden {
-    left: -30%;
+    left: -40%;
   }
 `;
 
@@ -27,21 +27,18 @@ const Items = styled.div`
   height: 100%;
 `;
 
-const Menu = ({ children }) => (
-  <Container>
+const Menu = ({ hidden, children }) => (
+  <Container className={hidden && 'hidden'}>
     <Items>{children}</Items>
   </Container>
 );
 
 Menu.propTypes = {
+  hidden: PropTypes.bool,
   children: PropTypes.node,
 };
 
-export const MenuItem = styled.div`
-  font-size: 24px;
-  line-height: 48px;
-  box-sizing: border-box;
-  padding-left: 16px;
-`;
+export Hamburger from './Hamburger';
+export MenuItem from './MenuItem';
 
 export default Menu;
