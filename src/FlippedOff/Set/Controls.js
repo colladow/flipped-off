@@ -7,7 +7,7 @@ import Text from 'components/base/Text';
 
 const Container = styled.div`
   width: 100vw;
-  height: 10vh;
+  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: space-between;

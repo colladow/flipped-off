@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Screen, { Content } from 'components/Screen';
@@ -7,24 +7,31 @@ import Card from 'components/Card';
 
 import { Hamburger } from '../Menu/';
 import Controls from './Controls';
+import ProgressBar from './ProgressBar';
 
-const Set = ({ onMenuClick }) => (
-  <Screen>
-    <Header>
-      <Left><Hamburger onClick={onMenuClick} /></Left>
-      <Right>Edit</Right>
-    </Header>
+const Set = ({ onMenuClick }) => {
+  const [percent, setPercent] = useState(0);
 
-    <Controls>
-      Spanish Basics
-    </Controls>
+  return (
+    <Screen>
+      <Header>
+        <Left><Hamburger onClick={onMenuClick} /></Left>
+        <Right>Edit</Right>
+      </Header>
 
-    <Content>
-      <Card>Hola</Card>
-      <Card>Manzana</Card>
-    </Content>
-  </Screen>
-);
+      <Controls>
+        Spanish Basics
+      </Controls>
+
+      <ProgressBar percent={percent} />
+
+      <Content>
+        <Card onClick={() => setPercent(25)}>Hola</Card>
+        <Card onClick={() => setPercent(75)}>Manzana</Card>
+      </Content>
+    </Screen>
+  );
+};
 
 Set.propTypes = {
   onMenuClick: PropTypes.func,

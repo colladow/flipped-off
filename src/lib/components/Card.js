@@ -21,13 +21,14 @@ const Container = styled.div`
   }
 `;
 
-const Card = ({ children }) => (
-  <Container>
+const Card = ({ onClick, children }) => (
+  <Container onClick={onClick}>
     <Heading>{children}</Heading>
   </Container>
 );
 
 Card.propTypes = {
+  onClick: PropTypes.func,
   children: PropTypes.node,
 };
 

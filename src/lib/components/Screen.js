@@ -8,6 +8,7 @@ const Screen = styled.div`
 
 export const Content = styled.section`
   box-sizing: border-box;
+  margin-top: ${props => props.theme.margin * 2}px;
   padding-bottom: 5vh;
 `;
 
