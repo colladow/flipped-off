@@ -10,19 +10,21 @@ import theme from './theme';
 const FlippedOff = () => {
   const [hideMenu, setHideMenu] = useState(true);
 
+  const toggleMenu = () => setHideMenu(!hideMenu);
+
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>
         <GlobalStyles />
 
-        <Menu hidden={hideMenu}>
+        <Menu hidden={hideMenu} onHamburgerClick={toggleMenu}>
           <Primary>Create New +</Primary>
           <MenuItem>Animals</MenuItem>
           <MenuItem>Math</MenuItem>
           <MenuItem>Spanish</MenuItem>
         </Menu>
 
-        <Set onMenuClick={() => setHideMenu(!hideMenu)} />
+        <Set onMenuClick={toggleMenu} />
       </React.Fragment>
     </ThemeProvider>
   );

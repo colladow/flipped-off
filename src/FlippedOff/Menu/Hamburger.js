@@ -5,7 +5,6 @@ const Hamburger = styled.i`
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 101;
   background-color: yellow;
 `;
 

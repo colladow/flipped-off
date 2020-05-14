@@ -6,6 +6,7 @@ import Header, { Left, Right } from 'components/Header';
 import Card from 'components/Card';
 
 import { Hamburger } from '../Menu/';
+import Controls from './Controls';
 
 const Set = ({ onMenuClick }) => (
   <Screen>
@@ -13,6 +14,10 @@ const Set = ({ onMenuClick }) => (
       <Left><Hamburger onClick={onMenuClick} /></Left>
       <Right>Edit</Right>
     </Header>
+
+    <Controls>
+      Spanish Basics
+    </Controls>
 
     <Content>
       <Card>Hola</Card>

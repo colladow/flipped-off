@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Hamburger from './Hamburger';
+
 const Container = styled.section`
   position: fixed;
   top: 0;
@@ -25,14 +27,23 @@ const Items = styled.div`
   height: 100%;
 `;
 
-const Menu = ({ hidden, children }) => (
+const FixedHamburger = styled(Hamburger)`
+  position: absolute;
+  top: 2.5vh;
+  left: 5vw;
+`;
+
+const Menu = ({ hidden, onHamburgerClick, children }) => (
   <Container className={hidden && 'hidden'}>
+    <FixedHamburger onClick={onHamburgerClick} />
+
     <Items>{children}</Items>
   </Container>
 );
 
 Menu.propTypes = {
   hidden: PropTypes.bool,
+  onHamburgerClick: PropTypes.func,
   children: PropTypes.node,
 };
 
