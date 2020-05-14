@@ -14,7 +14,7 @@ const Container = styled.div`
   border-radius: 16px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
   width: 80vw;
-  min-height: 40vh;
+  height: 80vw;
 
   &:first-child {
     margin-top: 0;

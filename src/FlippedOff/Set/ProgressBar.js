@@ -17,6 +17,14 @@ const ProgressBar = styled.div`
     background-color: ${props => props.theme.color.purple};
     transition: width 250ms ease-out;
   }
+
+  // TODO: make the bar stick to the top when the user has
+  //  scrolled past it
+  // --------------------
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // margin-top: 0;
 `;
 
 ProgressBar.defaultProps = {

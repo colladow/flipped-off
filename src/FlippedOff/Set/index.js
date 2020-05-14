@@ -26,8 +26,9 @@ const Set = ({ onMenuClick }) => {
       <ProgressBar percent={percent} />
 
       <Content>
-        <Card onClick={() => setPercent(25)}>Hola</Card>
-        <Card onClick={() => setPercent(75)}>Manzana</Card>
+        <Card onClick={() => setPercent(100/3)}>Hola</Card>
+        <Card onClick={() => setPercent(100/3 * 2)}>Manzana</Card>
+        <Card onClick={() => setPercent(100)}>Naranja</Card>
       </Content>
     </Screen>
   );
