@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
   html, body, #render {
     width: 100%;
     height: 100%;
-    background-color: lavender;
   }
 
   a {

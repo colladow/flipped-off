@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from './GlobalStyles';
-import Screen, { CardDisplay, Nav } from './Screen';
+import Screen from 'components/Screen';
+import Card from 'components/Card';
 import Menu, { MenuItem, Primary, Hamburger } from './Menu';
 
 import theme from './theme';
@@ -17,22 +18,17 @@ const FlippedOff = () => {
 
         <Hamburger onClick={() => setHideMenu(!hideMenu)} />
 
-        <Screen>
-          <CardDisplay>
-            <h1>Current Card</h1>
-          </CardDisplay>
-
-          <Nav>
-            <h1>Nav</h1>
-          </Nav>
-        </Screen>
-
         <Menu hidden={hideMenu}>
           <Primary>Create New +</Primary>
           <MenuItem>Animals</MenuItem>
           <MenuItem>Math</MenuItem>
           <MenuItem>Spanish</MenuItem>
         </Menu>
+
+        <Screen>
+          <Card>Hola</Card>
+          <Card>Manzana</Card>
+        </Screen>
       </React.Fragment>
     </ThemeProvider>
   );

@@ -6,16 +6,16 @@ const Container = styled.section`
   position: fixed;
   top: 0;
   left: 0;
-  width: 50%;
+  width: 50vw;
   height: 100%;
   background-color: #000;
   z-index: 100;
   transition: left 300ms ease-in;
   box-sizing: border-box;
-  padding: 25% 5% 5% 5%;
+  padding: 25vh 5vw 5vh 5vw;
 
   &.hidden {
-    left: -50%;
+    left: -50vw;
   }
 `;
 
