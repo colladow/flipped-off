@@ -4,7 +4,11 @@ const Screen = styled.div`
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  padding-top: ${props => props.theme.margin * 2}px;
+`;
+
+export const Content = styled.section`
+  box-sizing: border-box;
+  padding-bottom: 5vh;
 `;
 
 export default Screen;
