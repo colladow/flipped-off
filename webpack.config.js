@@ -18,6 +18,13 @@ module.exports = {
     }),
   ],
 
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, './src/lib'),
+    ],
+  },
+
   module: {
     rules: [
       {

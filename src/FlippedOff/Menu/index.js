@@ -6,18 +6,16 @@ const Container = styled.section`
   position: fixed;
   top: 0;
   left: 0;
-  width: 40%;
+  width: 50%;
   height: 100%;
-  background-color: lightpink;
+  background-color: #000;
   z-index: 100;
-  border-right: 1px solid ${props => props.theme.borderColor};
   transition: left 300ms ease-in;
   box-sizing: border-box;
-  padding-top: 25%;
-  padding-bottom: 5%;
+  padding: 25% 5% 5% 5%;
 
   &.hidden {
-    left: -40%;
+    left: -50%;
   }
 `;
 
@@ -39,6 +37,6 @@ Menu.propTypes = {
 };
 
 export Hamburger from './Hamburger';
-export MenuItem from './MenuItem';
+export MenuItem, { Primary } from './MenuItem';
 
 export default Menu;
