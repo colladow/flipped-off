@@ -9,8 +9,10 @@ const MenuItem = styled(Text)`
   font-weight: bold;
   box-sizing: border-box;
   cursor: pointer;
+  padding: 0 ${props => props.theme.margin}px;
   margin-top: ${props => props.theme.margin}px;
-  padding: 11px;
+  display: flex;
+  align-items: center;
 `;
 
 export const Primary = styled(MenuItem)`
