@@ -21,7 +21,7 @@ export const Right = styled.div`
 `;
 
 export const Title = styled(Text)`
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   width: 100%;
 `;

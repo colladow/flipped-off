@@ -1,5 +1,6 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import GlobalStyles from './GlobalStyles';
 import Menu, { MenuItem, Primary } from './Menu';
@@ -17,26 +18,28 @@ const FlippedOff = () => {
   useEffect(() => dispatch(loadData()), []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <React.Fragment>
-        <GlobalStyles />
+    <Router>
+      <ThemeProvider theme={theme}>
+        <React.Fragment>
+          <GlobalStyles />
 
-        <Menu
-          hidden={hideMenu}
-          onHamburgerClick={toggleMenu}
-        >
-          <Primary>Create New +</Primary>
-          {state.sets.map(set => (
-            <MenuItem key={set.name}>{set.name}</MenuItem>
-          ))}
-        </Menu>
+          <Menu
+            hidden={hideMenu}
+            onHamburgerClick={toggleMenu}
+          >
+            <Primary>Create New +</Primary>
+            {state.sets.map(set => (
+              <MenuItem key={set.name}>{set.name}</MenuItem>
+            ))}
+          </Menu>
 
-        <Set
-          set={state.sets[0] || {}}
-          onMenuClick={toggleMenu}
-        />
-      </React.Fragment>
-    </ThemeProvider>
+          <Set
+            set={state.sets[0] || {}}
+            onMenuClick={toggleMenu}
+          />
+        </React.Fragment>
+      </ThemeProvider>
+    </Router>
   );
 };
 

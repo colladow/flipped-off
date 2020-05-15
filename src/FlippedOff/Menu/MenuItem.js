@@ -6,7 +6,7 @@ const MenuItem = styled(Text)`
   min-height: ${props => props.theme.font.base * 4}px;
   color: #fff;
   border: 3px solid #fff;
-  font-weight: bold;
+  font-weight: 700;
   box-sizing: border-box;
   cursor: pointer;
   padding: 0 ${props => props.theme.margin}px;
