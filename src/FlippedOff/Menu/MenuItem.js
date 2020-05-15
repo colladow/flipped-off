@@ -3,15 +3,14 @@ import styled from 'styled-components';
 import Text from 'components/base/Text';
 
 const MenuItem = styled(Text)`
-  line-height: ${props => props.theme.font.base * 4}px;
+  min-height: ${props => props.theme.font.base * 4}px;
   color: #fff;
   border: 3px solid #fff;
   font-weight: bold;
   box-sizing: border-box;
   cursor: pointer;
   margin-top: ${props => props.theme.margin}px;
-  padding-left: 22px;
-  white-space: nowrap;
+  padding: 11px;
 `;
 
 export const Primary = styled(MenuItem)`

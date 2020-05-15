@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import data from 'data';
+
 import GlobalStyles from './GlobalStyles';
 import Menu, { MenuItem, Primary } from './Menu';
 import Set from './Set';
-
 import theme from './theme';
 
 const FlippedOff = () => {
@@ -17,11 +18,14 @@ const FlippedOff = () => {
       <React.Fragment>
         <GlobalStyles />
 
-        <Menu hidden={hideMenu} onHamburgerClick={toggleMenu}>
+        <Menu
+          hidden={hideMenu}
+          onHamburgerClick={toggleMenu}
+        >
           <Primary>Create New +</Primary>
-          <MenuItem>Animals</MenuItem>
-          <MenuItem>Math</MenuItem>
-          <MenuItem>Spanish</MenuItem>
+          {data.map(set => (
+            <MenuItem key={set.name}>{set.name}</MenuItem>
+          ))}
         </Menu>
 
         <Set onMenuClick={toggleMenu} />
