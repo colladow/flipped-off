@@ -16,9 +16,7 @@ export default function reducer(state, action) {
         ...state,
         sets: [
           ...state.sets,
-          {
-            name: action.name,
-          },
+          action.set,
         ],
       };
     default:

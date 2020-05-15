@@ -36,7 +36,7 @@ const FlippedOff = () => {
 
           <Switch>
             <Route path="/sets/create">
-              <CreateSet dispatch={dispatch} />
+              <CreateSet sets={state.sets} dispatch={dispatch} />
             </Route>
 
             <Route path="/sets/:id">

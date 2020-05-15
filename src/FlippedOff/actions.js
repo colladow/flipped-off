@@ -7,7 +7,7 @@ export const loadData = () => ({
 });
 
 export const CREATE_SET = 'SETS/CREATE';
-export const createSet = name => ({
+export const createSet = set => ({
   type: CREATE_SET,
-  name,
+  set,
 });
