@@ -1,6 +1,11 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 
 import GlobalStyles from './GlobalStyles';
 import Menu, { MenuItem, Primary } from './Menu';
@@ -33,10 +38,20 @@ const FlippedOff = () => {
             ))}
           </Menu>
 
-          <Set
-            set={state.sets[0] || {}}
-            onMenuClick={toggleMenu}
-          />
+          <Switch>
+            <Route path="/sets/:id">
+              <Set
+                sets={state.sets}
+                onMenuClick={toggleMenu}
+              />
+            </Route>
+
+            <Route path="/">
+              <p>Hi</p>
+
+              <p><Link to="/sets/0">Go to Set</Link></p>
+            </Route>
+          </Switch>
         </React.Fragment>
       </ThemeProvider>
     </Router>

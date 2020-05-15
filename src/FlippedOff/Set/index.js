@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory, useParams } from 'react-router-dom';
 
 import Screen, { Content } from 'components/Screen';
 import Header, { Left, Right } from 'components/Header';
@@ -9,8 +10,17 @@ import { Hamburger } from '../Menu/';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 
-const Set = ({ set, onMenuClick }) => {
+const Set = ({ sets, onMenuClick }) => {
   const [percent, setPercent] = useState(0);
+  const history = useHistory();
+  const id = parseInt(useParams().id);
+  const set = sets.length && sets[id];
+
+  if (sets.length && !sets[id]) {
+    history.replace('/');
+    return null;
+  }
+
   const size = (set.cards && set.cards.length) || 0;
 
   return (
@@ -41,7 +51,7 @@ const Set = ({ set, onMenuClick }) => {
 };
 
 Set.propTypes = {
-  set: PropTypes.object,
+  sets: PropTypes.array,
   onMenuClick: PropTypes.func,
 };
 

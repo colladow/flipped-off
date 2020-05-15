@@ -9,6 +9,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
     filename: 'index.bundle.js',
   },
 
@@ -53,5 +54,9 @@ module.exports = {
         use: 'file-loader',
       },
     ],
+  },
+
+  devServer: {
+    historyApiFallback: true,
   },
 };
