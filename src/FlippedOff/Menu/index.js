@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Hamburger from './Hamburger';
+import MenuItem, { Primary } from './MenuItem';
 
 const Container = styled.section`
   position: fixed;
@@ -33,21 +35,39 @@ const FixedHamburger = styled(Hamburger)`
   left: 5vw;
 `;
 
-const Menu = ({ hidden, onHamburgerClick, children }) => (
+const Menu = ({
+  sets,
+  hidden,
+  onToggleMenu,
+}) => (
   <Container className={hidden && 'hidden'}>
-    <FixedHamburger onClick={onHamburgerClick} />
+    <FixedHamburger onClick={onToggleMenu} />
 
-    <Items>{children}</Items>
+    <Items>
+      <Link
+        to="/sets/create"
+        onClick={onToggleMenu}
+      >
+        <Primary>Create New +</Primary>
+      </Link>
+
+      {sets && sets.map((set, index) => (
+        <Link
+          to={`/sets/${index}`}
+          key={set.name + index}
+          onClick={onToggleMenu}
+        >
+          <MenuItem>{set.name}</MenuItem>
+        </Link>
+      ))}
+    </Items>
   </Container>
 );
 
 Menu.propTypes = {
+  sets: PropTypes.array,
   hidden: PropTypes.bool,
-  onHamburgerClick: PropTypes.func,
-  children: PropTypes.node,
+  onToggleMenu: PropTypes.func,
 };
-
-export Hamburger from './Hamburger';
-export MenuItem, { Primary } from './MenuItem';
 
 export default Menu;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import Screen, { Content } from 'components/Screen';
 import Header, { Left, Right } from 'components/Header';
 import Card from 'components/Card';
 
-import { Hamburger } from '../Menu/';
+import Hamburger from '../Menu/Hamburger';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 

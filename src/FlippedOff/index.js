@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import GlobalStyles from './GlobalStyles';
-import Menu, { MenuItem, Primary } from './Menu';
+import Menu from './Menu';
 import Set from './Set';
 import CreateSet from './Set/Create';
 import theme from './theme';
@@ -17,13 +17,11 @@ import { loadData } from './actions';
 
 const FlippedOff = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [hideMenu, setHideMenu] = useState(true);
-
-  const toggleMenu = () => setHideMenu(!hideMenu);
+  const [menuHidden, setMenuHidden] = useState(true);
+  const toggleMenu = () => setMenuHidden(!menuHidden);
 
   useEffect(() => dispatch(loadData()), []);
 
-  // TODO: move Menu contents to the Menu directory
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -31,16 +29,10 @@ const FlippedOff = () => {
           <GlobalStyles />
 
           <Menu
-            hidden={hideMenu}
-            onHamburgerClick={toggleMenu}
-          >
-            <Primary>
-              <Link to="/sets/create" onClick={toggleMenu}>Create New +</Link>
-            </Primary>
-            {state.sets.map(set => (
-              <MenuItem key={set.name}>{set.name}</MenuItem>
-            ))}
-          </Menu>
+            sets={state.sets}
+            hidden={menuHidden}
+            onToggleMenu={toggleMenu}
+          />
 
           <Switch>
             <Route path="/sets/create">
