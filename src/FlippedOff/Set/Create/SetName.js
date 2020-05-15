@@ -7,6 +7,7 @@ import Button from 'components/base/Button';
 import Screen, { Content } from 'components/Screen';
 import Header, { Left } from 'components/Header';
 import Card from 'components/Card';
+import handleEnterPress from 'handleEnterPress';
 
 const SetName = ({
   set,
@@ -30,6 +31,7 @@ const SetName = ({
             ref={input}
             value={set.name}
             onChange={e => onNameChange(e.target.value)}
+            onKeyPress={handleEnterPress(onNextClick)}
           />
         </Card>
 

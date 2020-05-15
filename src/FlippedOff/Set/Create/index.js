@@ -36,8 +36,19 @@ function Create({ sets, dispatch }) {
         ],
       })}
       onNextClick={() => setStep(STEPS.ADD_CARD)}
-      onDone={() => {
-        dispatch(createSet(set));
+      onDone={card => {
+        const newSet = {
+          ...set,
+        };
+
+        if (card.side1.text) {
+          newSet.cards = [
+            ...newSet.cards,
+            card,
+          ];
+        }
+
+        dispatch(createSet(newSet));
         history.push(`/sets/${sets.length}`);
       }}
     />

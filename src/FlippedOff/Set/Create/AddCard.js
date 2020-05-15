@@ -7,6 +7,7 @@ import Button from 'components/base/Button';
 import Screen, { Content } from 'components/Screen';
 import Header, { Left, Right, Title } from 'components/Header';
 import Card from 'components/Card';
+import handleEnterPress from 'handleEnterPress';
 
 const initialCard = {
   side1: {
@@ -40,12 +41,20 @@ function AddCard ({
 
   useEffect(() => side1.current.focus(), []);
 
+  const submitCard = () => {
+    onCardAdd(card);
+    updateCard({
+      ...initialCard,
+    });
+    side1.current.focus();
+  };
+
   return (
     <Screen>
       <Header>
         <Left><Link to="/">X</Link></Left>
         <Title>{set.name}</Title>
-        <Right onClick={onDone}>Finish</Right>
+        <Right onClick={() => onDone(card)}>Finish</Right>
       </Header>
 
       <Content>
@@ -57,6 +66,7 @@ function AddCard ({
             onChange={e => updateSide(card, 'side1', {
               text: e.target.value,
             })}
+            onKeyPress={handleEnterPress(submitCard)}
           />
         </Card>
 
@@ -67,15 +77,11 @@ function AddCard ({
             onChange={e => updateSide(card, 'side2', {
               text: e.target.value,
             })}
+            onKeyPress={handleEnterPress(submitCard)}
           />
         </Card>
 
-        <Button onClick={() => {
-          onCardAdd(card);
-          updateCard({
-            ...initialCard,
-          });
-        }}>
+        <Button onClick={submitCard}>
           Save &amp; Add Next Card
         </Button>
       </Content>
