@@ -9,8 +9,9 @@ import { Hamburger } from '../Menu/';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 
-const Set = ({ onMenuClick }) => {
+const Set = ({ set, onMenuClick }) => {
   const [percent, setPercent] = useState(0);
+  const size = (set.cards && set.cards.length) || 0;
 
   return (
     <Screen>
@@ -20,21 +21,27 @@ const Set = ({ onMenuClick }) => {
       </Header>
 
       <Controls>
-        Spanish Basics
+        {set.name || ''}
       </Controls>
 
       <ProgressBar percent={percent} />
 
       <Content>
-        <Card onClick={() => setPercent(100/3)}>Hola</Card>
-        <Card onClick={() => setPercent(100/3 * 2)}>Manzana</Card>
-        <Card onClick={() => setPercent(100)}>Naranja</Card>
+        {set.cards && set.cards.map((card, index) => (
+          <Card
+            key={index}
+            onClick={() => setPercent(100/size * (index + 1))}
+          >
+            {card.side1.text}
+          </Card>
+        ))}
       </Content>
     </Screen>
   );
 };
 
 Set.propTypes = {
+  set: PropTypes.object,
   onMenuClick: PropTypes.func,
 };
 

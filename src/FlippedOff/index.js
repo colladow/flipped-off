@@ -31,7 +31,10 @@ const FlippedOff = () => {
           ))}
         </Menu>
 
-        <Set onMenuClick={toggleMenu} />
+        <Set
+          set={state.sets[0] || {}}
+          onMenuClick={toggleMenu}
+        />
       </React.Fragment>
     </ThemeProvider>
   );
