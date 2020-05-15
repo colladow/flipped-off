@@ -10,6 +10,7 @@ import {
 import GlobalStyles from './GlobalStyles';
 import Menu, { MenuItem, Primary } from './Menu';
 import Set from './Set';
+import CreateSet from './Set/Create';
 import theme from './theme';
 import reducer, { initialState } from './reducer';
 import { loadData } from './actions';
@@ -22,6 +23,7 @@ const FlippedOff = () => {
 
   useEffect(() => dispatch(loadData()), []);
 
+  // TODO: move Menu contents to the Menu directory
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -32,13 +34,19 @@ const FlippedOff = () => {
             hidden={hideMenu}
             onHamburgerClick={toggleMenu}
           >
-            <Primary>Create New +</Primary>
+            <Primary>
+              <Link to="/sets/create" onClick={toggleMenu}>Create New +</Link>
+            </Primary>
             {state.sets.map(set => (
               <MenuItem key={set.name}>{set.name}</MenuItem>
             ))}
           </Menu>
 
           <Switch>
+            <Route path="/sets/create">
+              <CreateSet dispatch={dispatch} />
+            </Route>
+
             <Route path="/sets/:id">
               <Set
                 sets={state.sets}
@@ -50,6 +58,7 @@ const FlippedOff = () => {
               <p>Hi</p>
 
               <p><Link to="/sets/0">Go to Set</Link></p>
+              <p><Link to="/sets/create">Create a Set</Link></p>
             </Route>
           </Switch>
         </React.Fragment>

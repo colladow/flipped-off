@@ -1,4 +1,4 @@
-import { LOAD } from './actions';
+import { LOAD, CREATE_SET } from './actions';
 
 export const initialState = {
   sets: [],
@@ -10,6 +10,16 @@ export default function reducer(state, action) {
       return {
         ...state,
         sets: action.sets,
+      };
+    case CREATE_SET:
+      return {
+        ...state,
+        sets: [
+          ...state.sets,
+          {
+            name: action.name,
+          },
+        ],
       };
     default:
       state;
