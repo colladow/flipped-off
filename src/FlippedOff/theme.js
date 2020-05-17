@@ -15,6 +15,7 @@ const theme = {
     base: '#000',
     purple: '#6400e3',
     gray: '#efefef',
+    darkGray: '#9f9f9f',
   },
 };
 
