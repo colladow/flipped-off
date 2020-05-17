@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Input from 'components/base/Input';
-import Button from 'components/base/Button';
+import Button, { SmallButton } from 'components/base/Button';
 import Screen, { Content } from 'components/Screen';
 import Header, { Left, Right, Title } from 'components/Header';
 import Card from 'components/Card';
@@ -54,7 +54,11 @@ function AddCard ({
       <Header>
         <Left><Link to="/">X</Link></Left>
         <Title>{set.name}</Title>
-        <Right onClick={() => onDone(card)}>Finish</Right>
+        <Right>
+          <SmallButton onClick={() => onDone(card)}>
+            Finish
+          </SmallButton>
+        </Right>
       </Header>
 
       <Content>

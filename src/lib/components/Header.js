@@ -9,15 +9,20 @@ const Header = styled.section`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `;
 
-export const Left = styled.div`
-  margin-left: 5vw;
+const Control = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
-export const Right = styled.div`
-  margin-right: 5vw;
+export const Left = styled(Control)`
+  left: 5vw;
+`;
+
+export const Right = styled(Control)`
+  right: 5vw;
 `;
 
 export const Title = styled(Text)`
