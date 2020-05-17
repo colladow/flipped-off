@@ -17,6 +17,8 @@ const Container = styled.div`
   width: 80vw;
   height: 80vw;
 
+  ${props => props.small && 'height: 40vw;'}
+
   &:first-child {
     margin-top: 0;
   }
@@ -42,8 +44,14 @@ const Footer = styled(Title)`
   text-align: right;
 `;
 
-const Card = ({ title, footer, onClick, children }) => (
-  <Container onClick={onClick}>
+const Card = ({
+  title,
+  footer,
+  small,
+  onClick,
+  children,
+}) => (
+  <Container small={small} onClick={onClick}>
     {title && <Title>{title}</Title>}
 
     <Content>{children}</Content>
@@ -55,6 +63,7 @@ const Card = ({ title, footer, onClick, children }) => (
 Card.propTypes = {
   title: PropTypes.string,
   footer: PropTypes.string,
+  small: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node,
 };

@@ -7,9 +7,17 @@ const Screen = styled.div`
 `;
 
 export const Content = styled.section`
-  box-sizing: border-box;
   margin-top: ${props => props.theme.margin * 4}px;
+  box-sizing: border-box;
   padding-bottom: 5vh;
+`;
+
+export const Footer = styled.section`
+  position: fixed;
+  bottom: ${props => props.theme.margin * 2}px;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 102;
 `;
 
 export default Screen;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Button from 'components/base/Button';
 import TextArea from 'components/base/TextArea';
-import Screen, { Content } from 'components/Screen';
+import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left } from 'components/Header';
 import Card from 'components/Card';
 import handleEnterPress from 'handleEnterPress';
@@ -47,11 +47,13 @@ const SetName = ({
             onKeyPress={handleEnterPress(onNextClick)}
           />
         </Card>
+      </Content>
 
+      <Footer>
         <Button onClick={onNextClick}>
           Next
         </Button>
-      </Content>
+      </Footer>
     </Screen>
   );
 };

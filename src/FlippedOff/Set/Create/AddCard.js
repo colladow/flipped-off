@@ -62,7 +62,7 @@ function AddCard ({
       </Header>
 
       <Content>
-        <Card>
+        <Card small title="Side 1">
           <Input
             type="text"
             ref={side1}
@@ -74,7 +74,7 @@ function AddCard ({
           />
         </Card>
 
-        <Card>
+        <Card small title="Side 2">
           <Input
             type="text"
             value={card.side2.text}
