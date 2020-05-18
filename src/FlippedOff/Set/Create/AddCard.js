@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -21,6 +21,9 @@ const initialCard = {
   },
 };
 
+const SIDES = ['side1', 'side2'];
+const LIMIT = 30;
+
 function AddCard ({
   set,
   onCardAdd,
@@ -38,8 +41,6 @@ function AddCard ({
       ...changes,
     },
   })
-
-  useEffect(() => side1.current.focus(), []);
 
   const submitCard = () => {
     onCardAdd(card);
@@ -62,28 +63,36 @@ function AddCard ({
       </Header>
 
       <Content>
-        <Card small title="Side 1">
-          <Input
-            type="text"
-            ref={side1}
-            value={card.side1.text}
-            onChange={e => updateSide(card, 'side1', {
-              text: e.target.value,
+        {SIDES.map((side, index) => (
+          <Card
+            small
+            canHaveImage
+            key={side}
+            title={`Side ${index + 1}`}
+            footer={`${card[side].text.length}/${LIMIT}`}
+            imageUrl={card[side].imageUrl}
+            onImageUrlChange={e => updateSide(card, side, {
+              imageUrl: e.target.value,
             })}
-            onKeyPress={handleEnterPress(submitCard)}
-          />
-        </Card>
+          >
+            <Input
+              type="text"
+              autoFocus={side === 'side1'}
+              ref={side === 'side1' ? side1 : null}
+              value={card[side].text}
+              onChange={e => {
+                const { value } = e.target;
 
-        <Card small title="Side 2">
-          <Input
-            type="text"
-            value={card.side2.text}
-            onChange={e => updateSide(card, 'side2', {
-              text: e.target.value,
-            })}
-            onKeyPress={handleEnterPress(submitCard)}
-          />
-        </Card>
+                if (value.length <= LIMIT) {
+                  updateSide(card, side, {
+                    text: e.target.value,
+                  });
+                }
+              }}
+              onKeyPress={handleEnterPress(submitCard)}
+            />
+          </Card>
+        ))}
 
         <Button onClick={submitCard}>
           Save &amp; Add Next Card
