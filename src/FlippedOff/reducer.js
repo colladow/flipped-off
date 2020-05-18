@@ -1,6 +1,7 @@
 import {
   LOAD,
   CREATE_SET,
+  UPDATE_SET_NAME,
   UPDATE_CARD,
 } from './actions';
 
@@ -29,27 +30,40 @@ function updateCard(sets, { setId, cardIndex, changes}) {
   ];
 }
 
+const setReducerFns = {
+  [LOAD]: (sets, action) => ([
+    ...action.sets,
+  ]),
+
+  [CREATE_SET]: (sets, action) => ([
+    ...sets,
+    action.set,
+  ]),
+
+  [UPDATE_SET_NAME]: (sets, action) => {
+    const set = sets[action.setId];
+
+    return [
+      ...sets.slice(0, action.setId),
+      {
+        ...set,
+        name: action.name,
+      },
+    ];
+  },
+
+  [UPDATE_CARD]: updateCard,
+};
+
 export default function reducer(state, action) {
-  switch(action.type) {
-    case LOAD:
-      return {
-        ...state,
-        sets: action.sets,
-      };
-    case CREATE_SET:
-      return {
-        ...state,
-        sets: [
-          ...state.sets,
-          action.set,
-        ],
-      };
-    case UPDATE_CARD:
-      return {
-        ...state,
-        sets: updateCard(state.sets, action),
-      };
-    default:
-      state;
+  const func = setReducerFns[action.type];
+
+  if (func) {
+    return {
+      ...state,
+      sets: func(state.sets, action),
+    };
   }
+
+  return state;
 }

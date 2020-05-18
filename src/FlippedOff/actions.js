@@ -12,6 +12,13 @@ export const createSet = set => ({
   set,
 });
 
+export const UPDATE_SET_NAME = 'SETS/UPDATE_SET_NAME';
+export const updateSetName = (setId, name) => ({
+  type: UPDATE_SET_NAME,
+  setId,
+  name,
+});
+
 export const UPDATE_CARD = 'SETS/UPDATE_CARD';
 export const updateCard = (setId, cardIndex, changes) => ({
   type: UPDATE_CARD,

@@ -3,14 +3,14 @@ import styled from 'styled-components';
 const Grid = styled.section`
   display: flex;
   flex-wrap: wrap;
-  width: 80vw;
+  width: 90vw;
   margin: 0 auto;
-
+  box-sizing: border-box;
 `;
 
 export const Box = styled.div`
-  width: calc(26vw - ${props => props.theme.margin / 2}px);
-  height: calc(26vw - ${props => props.theme.margin / 2}px);
+  width: calc(29vw - ${props => props.theme.margin / 2}px);
+  height: calc(29vw - ${props => props.theme.margin / 2}px);
   display: flex;
   align-items: center;
   justify-content: center;

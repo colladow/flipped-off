@@ -9,7 +9,7 @@ const STEPS = {
 
 import Set from './Set';
 import Card from './Card';
-import { updateCard } from '../../actions';
+import { updateSetName, updateCard } from '../../actions';
 
 function Edit({ sets, dispatch }) {
   const [step, setStep] = useState(STEPS.SET);
@@ -31,6 +31,9 @@ function Edit({ sets, dispatch }) {
     <Component
       set={set}
       cardIndex={cardIndex}
+      onSaveName={name => {
+        dispatch(updateSetName(id, name));
+      }}
       onCardClick={index => {
         setCardIndex(index);
         setStep(STEPS.CARD);

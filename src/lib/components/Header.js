@@ -28,7 +28,8 @@ export const Right = styled(Control)`
 export const Title = styled(Text)`
   font-weight: 700;
   text-align: center;
-  width: 100%;
+  max-width: 50vw;
+  margin: 0 auto;
 `;
 
 export default Header;
