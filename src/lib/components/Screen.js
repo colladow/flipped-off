@@ -9,7 +9,7 @@ const Screen = styled.div`
 export const Content = styled.section`
   margin-top: ${props => props.theme.margin * 4}px;
   box-sizing: border-box;
-  padding-bottom: 5vh;
+  padding-bottom: calc(5vh + 36px); // compensate for Footer presence
 `;
 
 export const Footer = styled.section`

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Input from 'components/base/Input';
 import Button, { SmallButton } from 'components/base/Button';
-import Screen, { Content } from 'components/Screen';
+import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left, Right, Title } from 'components/Header';
 import Card from 'components/Card';
 import handleEnterPress from 'handleEnterPress';
@@ -93,11 +93,13 @@ function AddCard ({
             />
           </Card>
         ))}
+      </Content>
 
+      <Footer>
         <Button onClick={submitCard}>
           Save &amp; Add Next Card
         </Button>
-      </Content>
+      </Footer>
     </Screen>
   );
 }
