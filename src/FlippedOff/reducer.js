@@ -1,8 +1,33 @@
-import { LOAD, CREATE_SET } from './actions';
+import {
+  LOAD,
+  CREATE_SET,
+  UPDATE_CARD,
+} from './actions';
 
 export const initialState = {
   sets: [],
 };
+
+function updateCard(sets, { setId, cardIndex, changes}) {
+  const set = sets[setId];
+  const card = set.cards[cardIndex];
+
+  return [
+    ...sets.slice(0, setId),
+    {
+      ...set,
+      cards: [
+        ...set.cards.slice(0, cardIndex),
+        {
+          ...card,
+          ...changes,
+        },
+        ...set.cards.slice(cardIndex + 1),
+      ],
+    },
+    ...sets.slice(setId + 1),
+  ];
+}
 
 export default function reducer(state, action) {
   switch(action.type) {
@@ -18,6 +43,11 @@ export default function reducer(state, action) {
           ...state.sets,
           action.set,
         ],
+      };
+    case UPDATE_CARD:
+      return {
+        ...state,
+        sets: updateCard(state.sets, action),
       };
     default:
       state;

@@ -11,6 +11,7 @@ import GlobalStyles from './GlobalStyles';
 import Menu from './Menu';
 import Set from './Set';
 import CreateSet from './Set/Create';
+import EditSet from './Set/Edit';
 import theme from './theme';
 import reducer, { initialState } from './reducer';
 import { loadData } from './actions';
@@ -19,6 +20,7 @@ const FlippedOff = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [menuHidden, setMenuHidden] = useState(true);
   const toggleMenu = () => setMenuHidden(!menuHidden);
+  const { sets } = state;
 
   useEffect(() => dispatch(loadData()), []);
 
@@ -36,12 +38,16 @@ const FlippedOff = () => {
 
           <Switch>
             <Route path="/sets/create">
-              <CreateSet sets={state.sets} dispatch={dispatch} />
+              <CreateSet sets={sets} dispatch={dispatch} />
+            </Route>
+
+            <Route path="/sets/:id/edit">
+              <EditSet sets={sets} dispatch={dispatch} />
             </Route>
 
             <Route path="/sets/:id">
               <Set
-                sets={state.sets}
+                sets={sets}
                 onMenuClick={toggleMenu}
               />
             </Route>

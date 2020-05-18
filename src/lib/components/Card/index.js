@@ -39,13 +39,13 @@ function Card({
   onImageUrlChange,
   children,
 }) {
-  const [editImage, setEditImage] = useState(false);
+  const [editImage, setEditImage] = useState(canEditImage && !!imageUrl);
   const showSmallVersion = small && !imageUrl;
 
   return (
     <React.Fragment>
       <Container small={showSmallVersion} onClick={onClick}>
-        {canEditImage && !imageUrl && (
+        {canEditImage && (
           <EditImage onClick={() => setEditImage(!editImage)}>
             E
           </EditImage>

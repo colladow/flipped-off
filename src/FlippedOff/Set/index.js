@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 
 import Screen, { Content } from 'components/Screen';
 import Header, { Left, Right } from 'components/Header';
@@ -25,7 +25,7 @@ function Set({ sets, onMenuClick }) {
     <Screen>
       <Header>
         <Left><Hamburger onClick={onMenuClick} /></Left>
-        <Right>Edit</Right>
+        <Right><Link to={`/sets/${id}/edit`}>Edit</Link></Right>
       </Header>
 
       <Controls>

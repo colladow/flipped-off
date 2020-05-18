@@ -12,7 +12,7 @@ const STEPS = {
 };
 
 function Create({ sets, dispatch }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(STEPS.SET_NAME);
   const [set, updateSet] = useState({
     name: '',
     cards: [],
