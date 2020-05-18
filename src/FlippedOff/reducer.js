@@ -3,6 +3,7 @@ import {
   CREATE_SET,
   UPDATE_SET_NAME,
   UPDATE_CARD,
+  DELETE_SET,
 } from './actions';
 
 export const initialState = {
@@ -35,24 +36,29 @@ const setReducerFns = {
     ...action.sets,
   ]),
 
-  [CREATE_SET]: (sets, action) => ([
+  [CREATE_SET]: (sets, { set }) => ([
     ...sets,
-    action.set,
+    set,
   ]),
 
-  [UPDATE_SET_NAME]: (sets, action) => {
-    const set = sets[action.setId];
+  [UPDATE_SET_NAME]: (sets, { setId, name }) => {
+    const set = sets[setId];
 
     return [
-      ...sets.slice(0, action.setId),
+      ...sets.slice(0, setId),
       {
         ...set,
-        name: action.name,
+        name: name,
       },
     ];
   },
 
   [UPDATE_CARD]: updateCard,
+
+  [DELETE_SET]: (sets, { setId }) => ([
+    ...sets.slice(0, setId),
+    ...sets.slice(setId + 1),
+  ]),
 };
 
 export default function reducer(state, action) {

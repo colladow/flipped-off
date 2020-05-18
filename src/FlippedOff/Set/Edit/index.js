@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, useHistory } from 'react-router-dom';
 
 const STEPS = {
   SET: 0,
@@ -9,12 +9,13 @@ const STEPS = {
 
 import Set from './Set';
 import Card from './Card';
-import { updateSetName, updateCard } from '../../actions';
+import { updateSetName, updateCard, deleteSet } from '../../actions';
 
 function Edit({ sets, dispatch }) {
   const [step, setStep] = useState(STEPS.SET);
   const [cardIndex, setCardIndex] = useState(null);
   const { id } = useParams();
+  const history = useHistory();
   const set = sets[id];
 
   if (sets.length === 0) {
@@ -33,6 +34,10 @@ function Edit({ sets, dispatch }) {
       cardIndex={cardIndex}
       onSaveName={name => {
         dispatch(updateSetName(id, name));
+      }}
+      onDeleteSet={() => {
+        dispatch(deleteSet(id));
+        history.push('/');
       }}
       onCardClick={index => {
         setCardIndex(index);

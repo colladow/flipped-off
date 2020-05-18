@@ -17,7 +17,12 @@ const Input = styled(BaseInput)`
   text-overflow: ellipsis;
 `;
 
-function Set({ set, onSaveName, onCardClick }) {
+function Set({
+  set,
+  onSaveName,
+  onDeleteSet,
+  onCardClick,
+}) {
   const [name, setName] = useState(set.name);
   const saveName = () => {
     const value = name.trim();
@@ -57,7 +62,7 @@ function Set({ set, onSaveName, onCardClick }) {
       </Content>
 
       <Footer>
-        <Button>Delete Set</Button>
+        <Button onClick={onDeleteSet}>Delete Set</Button>
       </Footer>
     </Screen>
   );
@@ -66,6 +71,7 @@ function Set({ set, onSaveName, onCardClick }) {
 Set.propTypes = {
   set: PropTypes.object,
   onSaveName: PropTypes.func,
+  onDeleteSet: PropTypes.func,
   onCardClick: PropTypes.func,
 };
 
