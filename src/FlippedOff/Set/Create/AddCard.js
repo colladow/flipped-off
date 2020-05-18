@@ -62,7 +62,7 @@ function AddCard ({
         </Right>
       </Header>
 
-      <Content>
+      <Content footerButtons={1}>
         {SIDES.map((side, index) => (
           <Card
             small
