@@ -32,3 +32,10 @@ export const deleteSet = setId => ({
   type: DELETE_SET,
   setId: parseInt(setId),
 });
+
+export const DELETE_CARDS = 'SETS/DELETE_CARDS';
+export const deleteCards = (setId, cardIndexes) => ({
+  type: DELETE_CARDS,
+  setId: parseInt(setId),
+  cardIndexes,
+});

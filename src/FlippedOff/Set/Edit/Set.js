@@ -19,11 +19,16 @@ const Input = styled(BaseInput)`
 
 function Set({
   set,
+  setId,
   onSaveName,
   onDeleteSet,
+  onDeleteCards,
   onCardClick,
 }) {
   const [name, setName] = useState(set.name);
+  const [selectMode, toggleSelectMode] = useState(false);
+  const [selected, updateSelected] = useState({});
+
   const saveName = () => {
     const value = name.trim();
 
@@ -35,7 +40,7 @@ function Set({
   return (
     <Screen>
       <Header>
-        <Left><Link to="/">X</Link></Left>
+        <Left><Link to={`/sets/${setId}`}>X</Link></Left>
         <Title>
           <Input
             type="text"
@@ -45,15 +50,38 @@ function Set({
             handleEnterPress={handleEnterPress(saveName)}
           />
         </Title>
-        <Right><SmallButton>Select</SmallButton></Right>
+        <Right>
+          <SmallButton
+            onClick={() => {
+              toggleSelectMode(!selectMode);
+
+              if (selectMode) {
+                updateSelected({});
+              }
+            }}
+          >
+            {selectMode ? 'Cancel': 'Select'}
+          </SmallButton>
+        </Right>
       </Header>
 
-      <Content footerButtons={1}>
+      <Content footerButtons={selectMode ? 2 : 1}>
         <Grid>
           {set.cards.map((card, index) => (
             <Box
               key={index}
-              onClick={() => onCardClick(index)}
+              selected={selected[index]}
+              selectMode={selectMode}
+              onClick={() => {
+                if (selectMode) {
+                  updateSelected({
+                    ...selected,
+                    [index]: selected[index] ? undefined : true,
+                  });
+                } else {
+                  onCardClick(index);
+                }
+              }}
             >
               <Text>{card.side1.text}</Text>
             </Box>
@@ -62,6 +90,17 @@ function Set({
       </Content>
 
       <Footer>
+        {selectMode && (
+          <Button
+            onClick={() => {
+              onDeleteCards(selected);
+              toggleSelectMode(false);
+              updateSelected({});
+            }}
+          >
+            Delete Selected
+          </Button>
+        )}
         <Button onClick={onDeleteSet}>Delete Set</Button>
       </Footer>
     </Screen>
@@ -70,8 +109,10 @@ function Set({
 
 Set.propTypes = {
   set: PropTypes.object,
+  setId: PropTypes.string,
   onSaveName: PropTypes.func,
   onDeleteSet: PropTypes.func,
+  onDeleteCards: PropTypes.func,
   onCardClick: PropTypes.func,
 };
 

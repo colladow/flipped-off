@@ -37,6 +37,22 @@ export const Box = styled.div`
     bottom: -4px;
     left: -4px;
   }
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: ${props => props.theme.margin}px;
+    right: ${props => props.theme.margin}px;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid ${props => props.theme.color.red};
+    visibility: ${props => props.selectMode ? 'visible' : 'hidden'};
+    transition: background-color 100ms linear;
+
+    ${props => props.selected && `background-color: ${props.theme.color.red};`}
+  }
 `;
 
 export default Grid;

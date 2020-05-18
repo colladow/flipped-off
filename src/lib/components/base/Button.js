@@ -12,6 +12,7 @@ const Button = styled.button`
   display: block;
   width: 80vw;
   margin: ${props => props.theme.margin * 2}px auto 0;
+  text-transform: uppercase;
 `;
 
 export const SmallButton = styled.button`

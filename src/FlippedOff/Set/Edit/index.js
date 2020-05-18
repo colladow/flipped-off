@@ -9,7 +9,12 @@ const STEPS = {
 
 import Set from './Set';
 import Card from './Card';
-import { updateSetName, updateCard, deleteSet } from '../../actions';
+import {
+  updateSetName,
+  updateCard,
+  deleteSet,
+  deleteCards,
+} from '../../actions';
 
 function Edit({ sets, dispatch }) {
   const [step, setStep] = useState(STEPS.SET);
@@ -31,6 +36,7 @@ function Edit({ sets, dispatch }) {
   return (
     <Component
       set={set}
+      setId={id}
       cardIndex={cardIndex}
       onSaveName={name => {
         dispatch(updateSetName(id, name));
@@ -39,6 +45,7 @@ function Edit({ sets, dispatch }) {
         dispatch(deleteSet(id));
         history.push('/');
       }}
+      onDeleteCards={cardIndexes => dispatch(deleteCards(id, cardIndexes))}
       onCardClick={index => {
         setCardIndex(index);
         setStep(STEPS.CARD);

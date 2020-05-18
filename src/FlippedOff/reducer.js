@@ -4,6 +4,7 @@ import {
   UPDATE_SET_NAME,
   UPDATE_CARD,
   DELETE_SET,
+  DELETE_CARDS,
 } from './actions';
 
 export const initialState = {
@@ -25,6 +26,28 @@ function updateCard(sets, { setId, cardIndex, changes}) {
           ...changes,
         },
         ...set.cards.slice(cardIndex + 1),
+      ],
+    },
+    ...sets.slice(setId + 1),
+  ];
+}
+
+function deleteCards(sets, { setId, cardIndexes }) {
+  const set = sets[setId];
+  const keep = [];
+
+  set.cards.forEach((card, index) => {
+    if (!cardIndexes[index]) {
+      keep.push(card);
+    }
+  });
+
+  return [
+    ...sets.slice(0, setId),
+    {
+      ...set,
+      cards: [
+        ...keep,
       ],
     },
     ...sets.slice(setId + 1),
@@ -59,6 +82,8 @@ const setReducerFns = {
     ...sets.slice(0, setId),
     ...sets.slice(setId + 1),
   ]),
+
+  [DELETE_CARDS]: deleteCards,
 };
 
 export default function reducer(state, action) {
