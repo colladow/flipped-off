@@ -19,9 +19,23 @@ export const Box = styled.div`
   margin: 0 ${props => props.theme.margin}px ${props => props.theme.margin}px 0;
   box-sizing: border-box;
   cursor: pointer;
+  position: relative;
 
   &:nth-child(3n) {
     margin-right: 0;
+  }
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border: 1px solid #000;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-radius: 20px 0 20px 16px;
+    bottom: -4px;
+    left: -4px;
   }
 `;
 
