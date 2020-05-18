@@ -37,7 +37,6 @@ function Set({ sets, onMenuClick }) {
       <Content>
         {set.cards && set.cards.map((card, index) => (
           <Card
-            canHaveImage
             key={index}
             imageUrl={card.side1.imageUrl}
             onClick={() => setPercent(100/size * (index + 1))}

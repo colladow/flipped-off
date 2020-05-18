@@ -66,7 +66,7 @@ function AddCard ({
         {SIDES.map((side, index) => (
           <Card
             small
-            canHaveImage
+            canEditImage
             key={side}
             title={`Side ${index + 1}`}
             footer={`${card[side].text.length}/${LIMIT}`}

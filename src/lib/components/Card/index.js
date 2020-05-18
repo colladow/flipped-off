@@ -33,7 +33,7 @@ function Card({
   title,
   footer,
   small,
-  canHaveImage,
+  canEditImage,
   imageUrl,
   onClick,
   onImageUrlChange,
@@ -45,7 +45,7 @@ function Card({
   return (
     <React.Fragment>
       <Container small={showSmallVersion} onClick={onClick}>
-        {canHaveImage && !imageUrl && (
+        {canEditImage && !imageUrl && (
           <EditImage onClick={() => setEditImage(!editImage)}>
             E
           </EditImage>
@@ -54,7 +54,7 @@ function Card({
         {title && <Title>{title}</Title>}
 
         <Content>
-          {canHaveImage && imageUrl && (
+          {imageUrl && (
             <Image url={imageUrl} />
           )}
 
@@ -80,7 +80,7 @@ Card.propTypes = {
   title: PropTypes.string,
   footer: PropTypes.string,
   small: PropTypes.bool,
-  canHaveImage: PropTypes.bool,
+  canEditImage: PropTypes.bool,
   imageUrl: PropTypes.string,
   onClick: PropTypes.func,
   onImageUrlChange: PropTypes.func,

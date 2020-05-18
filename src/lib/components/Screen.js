@@ -12,7 +12,8 @@ export const Content = styled.section`
   box-sizing: border-box;
 
   ${props => props.footerButtons && `
-    padding-bottom: calc(5vh + ${props.theme.margin * 3 * props.footerButtons}px);
+    // the extra 24px is for mobile keyboards
+    padding-bottom: calc(5vh + ${props.theme.margin * 3 * props.footerButtons}px + 24px);
   `}
 `;
 
