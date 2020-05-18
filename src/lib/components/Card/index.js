@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Heading from 'components/base/Heading';
+
 import Title from './Title';
 import Content from './Content';
 import Footer from './Footer';
@@ -53,10 +55,10 @@ function Card({
 
         <Content>
           {canHaveImage && imageUrl && (
-            <Image src={imageUrl} />
+            <Image url={imageUrl} />
           )}
 
-          {children}
+          <Heading>{children}</Heading>
         </Content>
 
         {footer && <Footer>{footer}</Footer>}
