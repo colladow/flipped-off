@@ -27,6 +27,13 @@ export const updateCard = (setId, cardIndex, changes) => ({
   changes,
 });
 
+export const ADD_CARD = 'SETS/ADD_CARD';
+export const addCard = (setId, card) => ({
+  type: ADD_CARD,
+  setId: parseInt(setId),
+  card,
+});
+
 export const DELETE_SET = 'SETS/DELETE_SET';
 export const deleteSet = setId => ({
   type: DELETE_SET,

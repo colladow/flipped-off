@@ -12,6 +12,7 @@ import Card from './Card';
 import {
   updateSetName,
   updateCard,
+  addCard,
   deleteSet,
   deleteCards,
 } from '../../actions';
@@ -50,12 +51,21 @@ function Edit({ sets, dispatch }) {
         setCardIndex(index);
         setStep(STEPS.CARD);
       }}
+      onAddCardClick={() => {
+        setCardIndex(-1);
+        setStep(STEPS.CARD);
+      }}
       onCancelCard={() => {
         setStep(STEPS.SET);
         setCardIndex(null);
       }}
-      onSaveCard={changes => {
-        dispatch(updateCard(id, cardIndex, changes));
+      onSaveCard={(index, changes) => {
+        if (index === -1) {
+          dispatch(addCard(id, changes));
+        } else {
+          dispatch(updateCard(id, index, changes));
+        }
+
         setStep(STEPS.SET);
         setCardIndex(null);
       }}

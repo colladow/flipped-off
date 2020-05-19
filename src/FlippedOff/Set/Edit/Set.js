@@ -24,6 +24,7 @@ function Set({
   onDeleteSet,
   onDeleteCards,
   onCardClick,
+  onAddCardClick,
 }) {
   const [name, setName] = useState(set.name);
   const [selectMode, toggleSelectMode] = useState(false);
@@ -86,6 +87,12 @@ function Set({
               <Text>{card.side1.text}</Text>
             </Box>
           ))}
+          <Box
+            primary
+            onClick={onAddCardClick}
+          >
+            <Text color="white">Add Card +</Text>
+          </Box>
         </Grid>
       </Content>
 
@@ -114,6 +121,7 @@ Set.propTypes = {
   onDeleteSet: PropTypes.func,
   onDeleteCards: PropTypes.func,
   onCardClick: PropTypes.func,
+  onAddCardClick: PropTypes.func,
 };
 
 export default Set;

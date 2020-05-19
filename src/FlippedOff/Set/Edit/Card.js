@@ -17,9 +17,21 @@ function Card({
   onCancelCard,
   onSaveCard,
 }) {
-  const [card, updateCard] = useState({
+  const initialCard = cardIndex === -1 ? {
+    side1: {
+      text: '',
+      imageUrl: '',
+    },
+
+    side2: {
+      text: '',
+      imageUrl: '',
+    },
+  } : {
     ...set.cards[cardIndex],
-  });
+  };
+
+  const [card, updateCard] = useState(initialCard);
 
   const updateSide = (c, side, changes) => updateCard({
     ...c,
@@ -29,7 +41,7 @@ function Card({
     },
   })
 
-  const submitCard = () => onSaveCard(card);
+  const submitCard = () => onSaveCard(cardIndex, card);
 
   return (
     <Screen>

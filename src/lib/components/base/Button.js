@@ -8,7 +8,7 @@ const Button = styled.button`
   box-sizing: border-box;
   border: none;
   border-radius: 6px;
-  color: #fff;
+  color: ${props => props.theme.color.white};
   display: block;
   width: 80vw;
   margin: ${props => props.theme.margin * 2}px auto 0;
@@ -24,7 +24,7 @@ export const SmallButton = styled.button`
   padding: 0 ${props => props.theme.margin}px;
   box-sizing: border-box;
   border-radius: 6px;
-  background-color: #fff;
+  background-color: ${props => props.theme.color.white};
   font-weight: 700;
   text-transform: uppercase;
 `;

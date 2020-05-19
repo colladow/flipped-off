@@ -45,7 +45,7 @@ export const Box = styled.div`
     right: ${props => props.theme.margin}px;
     width: 22px;
     height: 22px;
-    background-color: #fff;
+    background-color: ${props => props.theme.color.white};
     border-radius: 100%;
     border: 1px solid ${props => props.theme.color.red};
     visibility: ${props => props.selectMode ? 'visible' : 'hidden'};
@@ -53,6 +53,8 @@ export const Box = styled.div`
 
     ${props => props.selected && `background-color: ${props.theme.color.red};`}
   }
+
+  ${props => props.primary && `background-color: ${props.theme.color.purple};`}
 `;
 
 export default Grid;

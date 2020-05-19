@@ -3,6 +3,7 @@ import {
   CREATE_SET,
   UPDATE_SET_NAME,
   UPDATE_CARD,
+  ADD_CARD,
   DELETE_SET,
   DELETE_CARDS,
 } from './actions';
@@ -54,6 +55,22 @@ function deleteCards(sets, { setId, cardIndexes }) {
   ];
 }
 
+function addCard(sets, { setId, card }) {
+  const set = sets[setId];
+
+  return [
+    ...sets.slice(0, setId),
+    {
+      ...set,
+      cards: [
+        ...set.cards,
+        card,
+      ],
+    },
+    ...sets.slice(setId + 1),
+  ];
+}
+
 const setReducerFns = {
   [LOAD]: (sets, action) => ([
     ...action.sets,
@@ -77,6 +94,8 @@ const setReducerFns = {
   },
 
   [UPDATE_CARD]: updateCard,
+
+  [ADD_CARD]: addCard,
 
   [DELETE_SET]: (sets, { setId }) => ([
     ...sets.slice(0, setId),

@@ -4,8 +4,8 @@ import Text from 'components/base/Text';
 
 const MenuItem = styled(Text)`
   min-height: ${props => props.theme.font.base * 4}px;
-  color: #fff;
-  border: 3px solid #fff;
+  color: ${props => props.theme.color.white};
+  border: 3px solid ${props => props.theme.color.white};
   font-weight: 700;
   box-sizing: border-box;
   cursor: pointer;
@@ -17,7 +17,7 @@ const MenuItem = styled(Text)`
 
 export const Primary = styled(MenuItem)`
   color: ${props => props.theme.color.purple};
-  background-color: #fff;
+  background-color: ${props => props.theme.color.white};
   margin-top: 0;
 `;
 
