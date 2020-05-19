@@ -116,9 +116,9 @@ export default function reducer(state, action) {
       ...state,
       sets: func(state.sets, action),
     };
-  }
 
-  data.save(newState);
+    data.save(newState);
+  }
 
   return newState;
 }

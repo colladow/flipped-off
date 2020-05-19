@@ -23,7 +23,10 @@ function Home({ sets, onMenuClick }) {
 
       <Content>
         {sets && sets.map((set, index) => (
-          <Card key={index}>
+          <Card
+            key={index}
+            onClick={() => history.push(`/sets/${index}`)}
+          >
             {set.name}
           </Card>
         ))}
