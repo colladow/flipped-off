@@ -3,7 +3,7 @@ import data from 'data';
 export const LOAD = 'SETS/LOAD';
 export const loadData = () => ({
   type: LOAD,
-  sets: data.sets,
+  sets: data.load().sets,
 });
 
 export const CREATE_SET = 'SETS/CREATE';

@@ -1,46 +1,23 @@
+const STORAGE_KEY = 'flippedOffSets';
+
 const data = {
-  sets: [
-    {
-      name: 'Spanish Basics Long Name',
-      cards: [
-        {
-          side1: {
-            text: 'Hola',
-            imageUrl: '',
-          },
-          
-          side2: {
-            text: 'Hello',
-            imageUrl: '',
-          },
-        },
+  load() {
+    let data = window.localStorage.getItem(STORAGE_KEY);
 
-        {
-          side1: {
-            text: 'Manzana',
-            imageUrl: '',
-          },
-          
-          side2: {
-            text: 'Apple',
-            imageUrl: '',
-          },
-        },
+    if (data) {
+      data = JSON.parse(data);
+    } else {
+      data = {
+        sets: [],
+      };
+    }
 
-        {
-          side1: {
-            text: 'Naranja',
-            imageUrl: '',
-          },
-          
-          side2: {
-            text: 'Orange',
-            imageUrl: '',
-          },
-        },
-      ],
-    },
-  ],
+    return data;
+  },
+
+  save(state) {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  },
 };
 
 export default data;

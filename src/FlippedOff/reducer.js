@@ -1,3 +1,5 @@
+import data from 'data';
+
 import {
   LOAD,
   CREATE_SET,
@@ -107,13 +109,16 @@ const setReducerFns = {
 
 export default function reducer(state, action) {
   const func = setReducerFns[action.type];
+  let newState = state;
 
   if (func) {
-    return {
+    newState = {
       ...state,
       sets: func(state.sets, action),
     };
   }
 
-  return state;
+  data.save(newState);
+
+  return newState;
 }
