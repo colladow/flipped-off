@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import Input from 'components/base/Input';
 
 export const EditImage = styled.i`
-  position: absolute;
   top: ${props => props.theme.margin * 1.5}px;
   right: ${props => props.theme.margin * 1.5}px;
+  position: absolute;
 `;
 
 export const ImageInput = styled(Input)`

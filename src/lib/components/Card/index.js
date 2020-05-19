@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Heading from 'components/base/Heading';
+import ImageIcon from 'icons/Image';
 
 import Title from './Title';
 import Content from './Content';
@@ -47,7 +48,7 @@ function Card({
       <Container small={showSmallVersion} onClick={onClick}>
         {canEditImage && (
           <EditImage onClick={() => setEditImage(!editImage)}>
-            E
+            <ImageIcon highlight={editImage} />
           </EditImage>
         )}
 

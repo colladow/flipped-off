@@ -9,6 +9,7 @@ import Text from 'components/base/Text';
 import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left, Right, Title } from 'components/Header';
 import Grid, { Box } from 'components/Grid';
+import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
 // TODO: maybe implement font resizing
@@ -41,7 +42,7 @@ function Set({
   return (
     <Screen>
       <Header>
-        <Left><Link to={`/sets/${setId}`}>X</Link></Left>
+        <Left><Link to={`/sets/${setId}`}><Close /></Link></Left>
         <Title>
           <Input
             type="text"

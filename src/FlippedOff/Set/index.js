@@ -5,6 +5,7 @@ import { Link, Redirect, useParams } from 'react-router-dom';
 import Screen, { Content } from 'components/Screen';
 import Header, { Left, Right } from 'components/Header';
 import Card from 'components/Card';
+import Menu from 'icons/menu.svg';
 
 import Hamburger from '../Menu/Hamburger';
 import Controls from './Controls';
@@ -25,7 +26,7 @@ function Set({ sets, onMenuClick }) {
     <Screen>
       <Header>
         <Left><Hamburger onClick={onMenuClick} /></Left>
-        <Right><Link to={`/sets/${id}/edit`}>Edit</Link></Right>
+        <Right><Link to={`/sets/${id}/edit`}><Menu /></Link></Right>
       </Header>
 
       <Controls>

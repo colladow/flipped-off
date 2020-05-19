@@ -6,6 +6,7 @@ import Button from 'components/base/Button';
 import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left, Title } from 'components/Header';
 import CardComponent from 'components/Card';
+import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
 const SIDES = ['side1', 'side2'];
@@ -46,7 +47,7 @@ function Card({
   return (
     <Screen>
       <Header>
-        <Left onClick={onCancelCard}>X</Left>
+        <Left onClick={onCancelCard}><Close /></Left>
         <Title>{set.name}</Title>
       </Header>
 
