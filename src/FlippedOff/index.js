@@ -4,12 +4,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from 'react-router-dom';
 
 import GlobalStyles from './GlobalStyles';
 import Menu from './Menu';
 import Set from './Set';
+import Home from './Home';
 import CreateSet from './Set/Create';
 import EditSet from './Set/Edit';
 import theme from './theme';
@@ -53,10 +53,10 @@ const FlippedOff = () => {
             </Route>
 
             <Route path="/">
-              <p>Hi</p>
-
-              <p><Link to="/sets/0">Go to Set</Link></p>
-              <p><Link to="/sets/create">Create a Set</Link></p>
+              <Home
+                sets={sets}
+                onMenuClick={toggleMenu}
+              />
             </Route>
           </Switch>
         </React.Fragment>

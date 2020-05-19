@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import ImageIcon from './image.svg';
 
-const Container = styled.div`
+const Container = styled.i`
   width: 16px;
   height: 16px;
 

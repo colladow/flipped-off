@@ -7,6 +7,7 @@ import TextArea from 'components/base/TextArea';
 import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left } from 'components/Header';
 import Card from 'components/Card';
+import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
 const LIMIT = 50;
@@ -25,7 +26,7 @@ const SetName = ({
   return (
     <Screen>
       <Header>
-        <Left><Link to="/">X</Link></Left>
+        <Left><Link to="/"><Close /></Link></Left>
       </Header>
 
       <Content>

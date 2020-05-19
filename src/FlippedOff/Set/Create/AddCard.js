@@ -7,6 +7,7 @@ import Button, { SmallButton } from 'components/base/Button';
 import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left, Right, Title } from 'components/Header';
 import Card from 'components/Card';
+import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
 const initialCard = {
@@ -53,7 +54,7 @@ function AddCard({
   return (
     <Screen>
       <Header>
-        <Left><Link to="/">X</Link></Left>
+        <Left><Link to="/"><Close /></Link></Left>
         <Title>{set.name}</Title>
         <Right>
           <SmallButton onClick={() => onDone(card)}>
