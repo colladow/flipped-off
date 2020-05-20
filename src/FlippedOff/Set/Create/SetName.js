@@ -10,7 +10,7 @@ import Card from 'components/Card';
 import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
-const LIMIT = 50;
+const LIMIT = 30;
 
 const SetName = ({
   set,

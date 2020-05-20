@@ -10,7 +10,7 @@ const TextArea = styled.textarea`
   padding: 0;
   text-align: center;
   width: 100%;
-  height: ${props => props.theme.font.medium * 1.5 * 3}px;
+  height: ${props => props.theme.font.medium * 1.5 * 2}px;
 `;
 
 export default TextArea;
