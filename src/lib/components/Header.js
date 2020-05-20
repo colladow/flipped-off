@@ -4,7 +4,7 @@ import Text from './base/Text';
 
 const Header = styled.section`
   width: 100vw;
-  height: 10vh;
+  height: 15vh;
   position: relative;
   box-sizing: border-box;
   display: flex;

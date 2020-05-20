@@ -13,6 +13,7 @@ const Container = styled(BaseContainer)`
   perspective: 1000px;
 `;
 
+// have to move the box-shadow to the div being flipped
 const Inner = styled.div`
   position: relative;
   width: 100%;
