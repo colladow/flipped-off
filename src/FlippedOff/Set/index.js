@@ -12,10 +12,26 @@ import Arrow from 'icons/arrow.svg';
 
 import Controls, { Button } from './Controls';
 
+// copied this shuffle algorithm from
+// https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
+function shuffle(cards) {
+  for(let i = cards.length - 1; i > 0; i -= 1){
+    const j = Math.floor(Math.random() * i);
+    const temp = cards[i];
+
+    cards[i] = cards[j];
+    cards[j] = temp;
+  }
+
+  return cards;
+}
+
 function Set({ sets }) {
   const [showMenu, setShowMenu] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [managed, setManaged] = useState([]);
+  const [forceFlip, setForceFlip] = useState(false);
   const id = parseInt(useParams().id);
   const progressBar = useRef(null);
   const set = sets.length && sets[id];
@@ -46,6 +62,16 @@ function Set({ sets }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (size) {
+      setManaged([
+        ...set.cards,
+      ]);
+    }
+  }, [sets]);
+
+  const flipAll = () => setForceFlip(!forceFlip);
+
   return (
     <Screen>
       <Header>
@@ -54,8 +80,24 @@ function Set({ sets }) {
           <Menu onClick={() => setShowMenu(!showMenu)} />
           <Controls visible={showMenu}>
             <Link to={`/sets/${id}/edit`}><Button>Edit Set</Button></Link>
-            <Button>Shuffle Order</Button>
-            <Button>Flip Order</Button>
+            <Button
+              onClick={() => {
+                setManaged([
+                  ...shuffle(managed),
+                ]);
+                setShowMenu(false);
+              }}
+            >
+              Shuffle Order
+            </Button>
+            <Button
+              onClick={() => {
+                flipAll();
+                setShowMenu(false);
+              }}
+            >
+              Flip All
+            </Button>
           </Controls>
         </Right>
       </Header>
@@ -87,11 +129,12 @@ function Set({ sets }) {
             }
           }}
         >
-          {set.cards && set.cards.map((card, index) => (
+          {managed && managed.map((card, index) => (
             <Card
               key={index}
               card={card}
               scrollIn={currentIndex === index}
+              forceFlip={forceFlip}
             />
           ))}
         </Swipeable>

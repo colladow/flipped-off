@@ -34,7 +34,7 @@ const Content = styled(BaseContent)`
   ${props => props.back && 'transform: rotateY(180deg);'}
 `;
 
-function Card({ card, scrollIn }) {
+function Card({ card, scrollIn, forceFlip }) {
   const [flipped, setFlipped] = useState(false);
   const container = useRef(null);
 
@@ -52,6 +52,8 @@ function Card({ card, scrollIn }) {
       behavior: 'smooth',
     });
   }, [scrollIn]);
+
+  useEffect(() => setFlipped(forceFlip), [forceFlip])
 
   return (
     <Container ref={container} onClick={() => setFlipped(!flipped)}>
@@ -79,6 +81,7 @@ function Card({ card, scrollIn }) {
 Card.propTypes = {
   card: PropTypes.object,
   scrollIn: PropTypes.bool,
+  forceFlip: PropTypes.bool,
 };
 
 export default Card;
