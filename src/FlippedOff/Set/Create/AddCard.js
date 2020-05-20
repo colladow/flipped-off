@@ -31,6 +31,7 @@ function AddCard({
   onDone,
 }) {
   const side1 = useRef(null);
+  const side2 = useRef(null);
   const [card, updateCard] = useState({
     ...initialCard,
   });
@@ -79,7 +80,7 @@ function AddCard({
             <Input
               type="text"
               autoFocus={side === 'side1'}
-              ref={side === 'side1' ? side1 : null}
+              ref={side === 'side1' ? side1 : side2}
               value={card[side].text}
               onChange={e => {
                 const { value } = e.target;
@@ -90,7 +91,13 @@ function AddCard({
                   });
                 }
               }}
-              onKeyPress={handleEnterPress(submitCard)}
+              onKeyPress={handleEnterPress(() => {
+                if (side === 'side1') {
+                  side2.current.focus();
+                } else {
+                  submitCard();
+                }
+              })}
             />
           </EditCard>
         ))}

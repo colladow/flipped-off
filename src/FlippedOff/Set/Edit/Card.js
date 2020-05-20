@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Input from 'components/base/Input';
@@ -18,6 +18,7 @@ function Card({
   onCancelCard,
   onSaveCard,
 }) {
+  const side2 = useRef(null);
   const initialCard = cardIndex === -1 ? {
     side1: {
       text: '',
@@ -67,6 +68,7 @@ function Card({
             <Input
               type="text"
               autoFocus={side === 'side1'}
+              ref={side === 'side2' ? side2 : null}
               value={card[side].text}
               onChange={e => {
                 const { value } = e.target;
@@ -77,7 +79,13 @@ function Card({
                   });
                 }
               }}
-              onKeyPress={handleEnterPress(submitCard)}
+              onKeyPress={handleEnterPress(() => {
+                if (side === 'side1') {
+                  side2.current.focus();
+                } else {
+                  submitCard();
+                }
+              })}
             />
           </EditCard>
         ))}
