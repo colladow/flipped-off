@@ -10,6 +10,8 @@ import EditCard from 'components/Card/Edit';
 import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
+import Success, { toastDuration } from './Success';
+
 const initialCard = {
   side1: {
     text: '',
@@ -30,11 +32,12 @@ function AddCard({
   onCardAdd,
   onDone,
 }) {
-  const side1 = useRef(null);
-  const side2 = useRef(null);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [card, updateCard] = useState({
     ...initialCard,
   });
+  const side1 = useRef(null);
+  const side2 = useRef(null);
 
   const updateSide = (c, side, changes) => updateCard({
     ...c,
@@ -49,7 +52,10 @@ function AddCard({
     updateCard({
       ...initialCard,
     });
+    setShowSuccess(true);
     side1.current.focus();
+
+    window.setTimeout(() => setShowSuccess(false), toastDuration);
   };
 
   return (
@@ -108,6 +114,8 @@ function AddCard({
           Save &amp; Add Next Card
         </Button>
       </Footer>
+
+      {showSuccess && <Success />}
     </Screen>
   );
 }
