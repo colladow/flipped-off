@@ -11,6 +11,7 @@ import Menu from 'icons/menu.svg';
 import Arrow from 'icons/arrow.svg'; 
 
 import Controls, { Button } from './Controls';
+import ReturnToTop from './ReturnToTop';
 
 // copied this shuffle algorithm from
 // https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
@@ -139,6 +140,8 @@ function Set({ sets }) {
           ))}
         </Swipeable>
       </Content>
+
+      {scrolled && <ReturnToTop onClick={() => setCurrentIndex(0)} />}
     </Screen>
   );
 }
