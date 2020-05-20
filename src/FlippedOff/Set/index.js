@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useParams } from 'react-router-dom';
+import { Swipeable } from 'react-swipeable';
 
 import Screen, { Content, Title } from 'components/Screen';
 import Header, { Left, Right } from 'components/Header';
@@ -12,8 +13,8 @@ import Arrow from 'icons/arrow.svg';
 import Controls, { Button } from './Controls';
 
 function Set({ sets }) {
-  const [percent, setPercent] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const id = parseInt(useParams().id);
   const set = sets.length && sets[id];
 
@@ -39,16 +40,35 @@ function Set({ sets }) {
 
       <Title>{set.name || ''}</Title>
 
-      <ProgressBar percent={percent} />
+      <ProgressBar percent={100/size * currentIndex} />
 
       <Content>
-        {set.cards && set.cards.map((card, index) => (
-          <Card
-            key={index}
-            card={card}
-            onClick={() => setPercent(100/size * (index + 1))}
-          />
-        ))}
+        <Swipeable
+          preventDefaultTouchmoveEvent
+          trackMouse={true}
+          onSwipedUp={() => {
+            const next = currentIndex + 1;
+
+            if (next < size) {
+              setCurrentIndex(next);
+            }
+          }}
+          onSwipedDown={() => {
+            const next = currentIndex - 1;
+
+            if (next >= 0) {
+              setCurrentIndex(next)
+            }
+          }}
+        >
+          {set.cards && set.cards.map((card, index) => (
+            <Card
+              key={index}
+              card={card}
+              scrollIn={currentIndex === index}
+            />
+          ))}
+        </Swipeable>
       </Content>
     </Screen>
   );

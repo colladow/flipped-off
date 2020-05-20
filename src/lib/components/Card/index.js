@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -34,11 +34,27 @@ const Content = styled(BaseContent)`
   ${props => props.back && 'transform: rotateY(180deg);'}
 `;
 
-function Card({ card }) {
+function Card({ card, scrollIn }) {
   const [flipped, setFlipped] = useState(false);
+  const container = useRef(null);
+
+  useEffect(() => {
+    const { current } = container;
+
+    if (!current || !scrollIn) {
+      return;
+    }
+
+    const { top, height } = current.getBoundingClientRect();
+
+    window.scrollTo({
+      top: (window.scrollY + top) - (height / 2),
+      behavior: 'smooth',
+    });
+  }, [scrollIn]);
 
   return (
-    <Container onClick={() => setFlipped(!flipped)}>
+    <Container ref={container} onClick={() => setFlipped(!flipped)}>
       <Inner flipped={flipped}>
         <Content>
           {card.side1.imageUrl && (
@@ -62,6 +78,7 @@ function Card({ card }) {
 
 Card.propTypes = {
   card: PropTypes.object,
+  scrollIn: PropTypes.bool,
 };
 
 export default Card;

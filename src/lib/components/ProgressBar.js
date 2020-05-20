@@ -18,13 +18,12 @@ const ProgressBar = styled.div`
     transition: width 250ms ease-out;
   }
 
-  // TODO: make the bar stick to the top when the user has
-  //  scrolled past it
-  // --------------------
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // margin-top: 0;
+  ${props => props.fixed && `
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+  `}
 `;
 
 ProgressBar.defaultProps = {
