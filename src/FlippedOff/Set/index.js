@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useParams } from 'react-router-dom';
 
+import Heading from 'components/base/Heading';
 import Screen, { Content, Title } from 'components/Screen';
 import Header, { Left, Right } from 'components/Header';
 import Card from 'components/Card';
+import ProgressBar from 'components/ProgressBar';
 import Menu from 'icons/menu.svg';
 import Arrow from 'icons/arrow.svg'; 
-
-import ProgressBar from './ProgressBar';
 
 function Set({ sets }) {
   const [percent, setPercent] = useState(0);
@@ -39,7 +39,7 @@ function Set({ sets }) {
             imageUrl={card.side1.imageUrl}
             onClick={() => setPercent(100/size * (index + 1))}
           >
-            {card.side1.text}
+            <Heading>{card.side1.text}</Heading>
           </Card>
         ))}
       </Content>

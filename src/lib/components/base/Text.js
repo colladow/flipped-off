@@ -6,6 +6,7 @@ const Text = styled.p`
   line-height: ${props => props.theme.font.base * 1.5}px;
   font-weight: 500;
   color: ${props => props.theme.color[props.color] || props.theme.color.base};
+  ${props => props.align && `text-align: ${props.align};`}
 `;
 
 export default Text;

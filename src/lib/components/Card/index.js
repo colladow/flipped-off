@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Heading from 'components/base/Heading';
 import ImageIcon from 'icons/Image';
 
 import Title from './Title';
@@ -59,7 +58,7 @@ function Card({
             <Image url={imageUrl} />
           )}
 
-          <Heading>{children}</Heading>
+          {children}
         </Content>
 
         {footer && <Footer>{footer}</Footer>}
