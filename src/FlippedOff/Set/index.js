@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import { Swipeable } from 'react-swipeable';
@@ -15,14 +15,36 @@ import Controls, { Button } from './Controls';
 function Set({ sets }) {
   const [showMenu, setShowMenu] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   const id = parseInt(useParams().id);
+  const progressBar = useRef(null);
   const set = sets.length && sets[id];
+  let scrollBreakpoint;
 
   if (sets.length && !sets[id]) {
     return <Redirect to="/" />;
   }
 
   const size = (set.cards && set.cards.length) || 0;
+
+  const handleScroll = () => {
+    if (!scrollBreakpoint) {
+      return;
+    }
+
+    setScrolled(
+      document.body.scrollTop > scrollBreakpoint ||
+      document.documentElement.scrollTop > scrollBreakpoint
+    );
+  }
+
+  useEffect(() => {
+    scrollBreakpoint = progressBar.current.getBoundingClientRect().top;
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <Screen>
@@ -40,7 +62,11 @@ function Set({ sets }) {
 
       <Title>{set.name || ''}</Title>
 
-      <ProgressBar percent={100/size * currentIndex} />
+      <ProgressBar
+        ref={progressBar}
+        percent={100/size * (currentIndex + 1)}
+        fixed={scrolled}
+      />
 
       <Content>
         <Swipeable
