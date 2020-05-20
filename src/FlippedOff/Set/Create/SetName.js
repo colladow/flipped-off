@@ -6,7 +6,7 @@ import Button from 'components/base/Button';
 import TextArea from 'components/base/TextArea';
 import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left } from 'components/Header';
-import Card from 'components/Card';
+import EditCard from 'components/Card/Edit';
 import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
@@ -30,7 +30,7 @@ const SetName = ({
       </Header>
 
       <Content>
-        <Card
+        <EditCard
           title="Name your set"
           footer={`${length}/${LIMIT}`}
         >
@@ -47,7 +47,7 @@ const SetName = ({
             }}
             onKeyPress={handleEnterPress(onNextClick)}
           />
-        </Card>
+        </EditCard>
       </Content>
 
       <Footer>

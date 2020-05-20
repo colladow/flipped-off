@@ -5,7 +5,7 @@ import Input from 'components/base/Input';
 import Button from 'components/base/Button';
 import Screen, { Content, Footer } from 'components/Screen';
 import Header, { Left, Title } from 'components/Header';
-import CardComponent from 'components/Card';
+import EditCard from 'components/Card/Edit';
 import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
 
@@ -53,7 +53,7 @@ function Card({
 
       <Content footerButtons={1}>
         {SIDES.map((side, index) => (
-          <CardComponent
+          <EditCard
             small
             canEditImage
             key={side}
@@ -79,7 +79,7 @@ function Card({
               }}
               onKeyPress={handleEnterPress(submitCard)}
             />
-          </CardComponent>
+          </EditCard>
         ))}
       </Content>
 
