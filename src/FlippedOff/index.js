@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 
 import GlobalStyles from './GlobalStyles';
-import Menu from './Menu';
 import Set from './Set';
 import Home from './Home';
 import CreateSet from './Set/Create';
@@ -18,8 +17,6 @@ import { loadData } from './actions';
 
 const FlippedOff = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [menuHidden, setMenuHidden] = useState(true);
-  const toggleMenu = () => setMenuHidden(!menuHidden);
   const { sets } = state;
 
   useEffect(() => dispatch(loadData()), []);
@@ -29,12 +26,6 @@ const FlippedOff = () => {
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <GlobalStyles />
-
-          <Menu
-            sets={state.sets}
-            hidden={menuHidden}
-            onToggleMenu={toggleMenu}
-          />
 
           <Switch>
             <Route path="/sets/create">
@@ -46,17 +37,11 @@ const FlippedOff = () => {
             </Route>
 
             <Route path="/sets/:id">
-              <Set
-                sets={sets}
-                onMenuClick={toggleMenu}
-              />
+              <Set sets={sets} />
             </Route>
 
             <Route path="/">
-              <Home
-                sets={sets}
-                onMenuClick={toggleMenu}
-              />
+              <Home sets={sets} />
             </Route>
           </Switch>
         </React.Fragment>

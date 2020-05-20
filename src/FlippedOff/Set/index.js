@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useParams } from 'react-router-dom';
 
-import Screen, { Content } from 'components/Screen';
+import Screen, { Content, Title } from 'components/Screen';
 import Header, { Left, Right } from 'components/Header';
 import Card from 'components/Card';
 import Menu from 'icons/menu.svg';
+import Arrow from 'icons/arrow.svg'; 
 
-import Hamburger from '../Menu/Hamburger';
-import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 
-function Set({ sets, onMenuClick }) {
+function Set({ sets }) {
   const [percent, setPercent] = useState(0);
   const id = parseInt(useParams().id);
   const set = sets.length && sets[id];
@@ -25,13 +24,11 @@ function Set({ sets, onMenuClick }) {
   return (
     <Screen>
       <Header>
-        <Left><Hamburger onClick={onMenuClick} /></Left>
+        <Left><Link to="/"><Arrow /></Link></Left>
         <Right><Link to={`/sets/${id}/edit`}><Menu /></Link></Right>
       </Header>
 
-      <Controls>
-        {set.name || ''}
-      </Controls>
+      <Title>{set.name || ''}</Title>
 
       <ProgressBar percent={percent} />
 
@@ -52,7 +49,6 @@ function Set({ sets, onMenuClick }) {
 
 Set.propTypes = {
   sets: PropTypes.array,
-  onMenuClick: PropTypes.func,
 };
 
 export default Set;

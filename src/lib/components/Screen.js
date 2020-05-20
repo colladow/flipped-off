@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 
+import BaseTitle from 'components/base/Title';
+
 const Screen = styled.div`
   width: 100vw;
   height: 100vh;
+  box-sizing: border-box;
+`;
+
+export const Title = styled(BaseTitle)`
+  margin-top: ${props => props.theme.margin * 2}px;
+  width: 100vw;
+  height: 5vh;
+  padding: 0 5vw;
   box-sizing: border-box;
 `;
 

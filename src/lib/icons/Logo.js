@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Hamburger = styled.i`
+const Logo = styled.i`
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -8,4 +8,4 @@ const Hamburger = styled.i`
   background-color: yellow;
 `;
 
-export default Hamburger;
+export default Logo;
