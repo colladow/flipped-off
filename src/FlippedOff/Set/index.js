@@ -10,8 +10,11 @@ import ProgressBar from 'components/ProgressBar';
 import Menu from 'icons/menu.svg';
 import Arrow from 'icons/arrow.svg'; 
 
+import Controls, { Button } from './Controls';
+
 function Set({ sets }) {
   const [percent, setPercent] = useState(0);
+  const [showMenu, setShowMenu] = useState(false);
   const id = parseInt(useParams().id);
   const set = sets.length && sets[id];
 
@@ -25,7 +28,14 @@ function Set({ sets }) {
     <Screen>
       <Header>
         <Left><Link to="/"><Arrow /></Link></Left>
-        <Right><Link to={`/sets/${id}/edit`}><Menu /></Link></Right>
+        <Right>
+          <Menu onClick={() => setShowMenu(!showMenu)} />
+          <Controls visible={showMenu}>
+            <Link to={`/sets/${id}/edit`}><Button>Edit Set</Button></Link>
+            <Button>Shuffle Order</Button>
+            <Button>Flip Order</Button>
+          </Controls>
+        </Right>
       </Header>
 
       <Title>{set.name || ''}</Title>

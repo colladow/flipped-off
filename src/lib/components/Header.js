@@ -9,6 +9,7 @@ const Header = styled.section`
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  z-index: 100;
 `;
 
 const Control = styled.div`

@@ -1,43 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import BaseTitle from 'components/base/Title';
 import Text from 'components/base/Text';
 
-const Container = styled.div`
-  width: 100vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+const Controls = styled.div`
+  background-color: ${props => props.theme.color.base};
+  position: absolute;
+  top: 80%;
+  right: ${props => props.theme.margin / 2}px;
+  width: 25vw;
+  z-index: 103;
   box-sizing: border-box;
-  padding: 0 5vw;
+  padding: ${props => props.theme.margin}px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transition: top 250ms ease-in, opacity 250ms ease-in-out;
+
+  ${props => props.visible && `
+    top: 100%;
+    opacity: 1;
+  `}
 `;
 
-const Title = styled(BaseTitle)`
-  width: 100%;
-`;
+export const Button = styled(Text)`
+  font-size: ${props => props.theme.font.small}px;
+  font-weight: 700;
+  color: ${props => props.theme.color.white};
+  cursor: pointer;
+  margin-top: ${props => props.theme.margin}px;
 
-const Button = styled(Text)`
-  margin-right: ${props => props.theme.margin}px;
-
-  &:last-child {
-    margin-right: 0;
+  &:first-child {
+    margin-top: 0;
   }
 `;
-
-const Controls = ({ children }) => (
-  <Container>
-    <Title>{children}</Title>
-    <Button>FS</Button>
-    <Button>Shuffle</Button>
-    <Button>Flip</Button>
-  </Container>
-);
-
-Controls.propTypes = {
-  children: PropTypes.node,
-};
 
 export default Controls;
