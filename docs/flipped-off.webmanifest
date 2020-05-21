@@ -1,7 +1,7 @@
 {
   "background_color": "#6400e3",
   "description": "A simple flash card application.",
-  "display": "standalone",
+  "display": "fullscreen",
   "icons": [
     {
       "src": "/flipped-off/logo.png",
@@ -11,5 +11,6 @@
   ],
   "name": "Flipped Off",
   "short_name": "Flip O",
-  "start_url": "https://colladow.github.io/flipped-off/index.html"
+  "start_url": "./index.html",
+  "scope": "https://colladow.github.io/flipped-off"
 }
