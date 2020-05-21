@@ -21,8 +21,10 @@ const FlippedOff = () => {
 
   useEffect(() => dispatch(loadData()), []);
 
+  const basename = __DEV__ ? '' : '/flipped-off';
+
   return (
-    <Router basename={__DEV__ ? '' : '/flipped-off'}>
+    <Router basename={basename}>
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <GlobalStyles />
