@@ -11,6 +11,5 @@
   ],
   "name": "Flipped Off",
   "short_name": "Flip O",
-  "start_url": "./index.html",
-  "scope": "https://colladow.github.io/flipped-off"
+  "start_url": "."
 }
