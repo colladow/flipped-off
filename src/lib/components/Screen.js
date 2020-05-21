@@ -20,7 +20,7 @@ export const Content = styled.section`
   margin-top: ${props => props.theme.margin * 4}px;
   padding-bottom: 5vh;
   box-sizing: border-box;
-  min-height: 65vh;
+  min-height: 55vh;
 `;
 
 export const Footer = styled.section`

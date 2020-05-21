@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
   html, body, #render {
     width: 100vw;
     height: 100vh;
+    box-sizing: border-box;
   }
 
   a {
