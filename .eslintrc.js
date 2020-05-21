@@ -12,6 +12,7 @@ module.exports = {
     "SharedArrayBuffer": "readonly",
     "require": "readonly",
     "__dirname": "readonly",
+    "__DEV__": "readonly",
   },
   "parser": "babel-eslint",
   "parserOptions": {

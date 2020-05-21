@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
@@ -15,6 +16,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/template.html'),
+      target: 'github',
+    }),
+    new webpack.DefinePlugin({
+      __DEV__: JSON.stringify(false),
     }),
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
