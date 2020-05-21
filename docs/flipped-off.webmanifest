@@ -3,11 +3,11 @@
   "description": "A simple index card application.",
   "display": "fullscreen",
   "icons": [{
-    "src": "logo.png",
+    "src": "/logo.png",
     "sizes": "192x192",
     "type": "image/png"
   }],
   "name": "Flipped Off",
   "short_name": "Flip O",
-  "start_url": "index.html"
+  "start_url": "/index.html"
 }
