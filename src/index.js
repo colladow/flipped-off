@@ -8,7 +8,7 @@ ReactDOM.render(<FlippedOff />, document.querySelector('#render'));
 // register service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').then(() => {
+    navigator.serviceWorker.register('/flipped-off/service-worker.js').then(() => {
       console.log('SW registered');
     }).catch(error => {
       console.log('SW registration failed: ', error);
