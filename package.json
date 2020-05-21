@@ -4,13 +4,12 @@
   "description": "Index cards!",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.js",
-    "build": "webpack --config webpack.config.js --progress --hide-modules",
+    "dev": "webpack-dev-server --config webpack.dev.config.js",
+    "build": "webpack --config webpack.prod.config.js --progress --hide-modules",
     "clean": "rm -rf node_modules",
     "start": "npm run dev"
   },
   "author": "Wilson Collado",
-  "license": "MIT",
   "dependencies": {
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
