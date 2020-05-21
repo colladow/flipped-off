@@ -1,0 +1,9 @@
+{
+  "background_color": "#6400e3",
+  "description": "A simple index card application.",
+  "display": "fullscreen",
+  "icons": [],
+  "name": "Flipped Off",
+  "short_name": "Flip O",
+  "start_url": "index.html"
+}
