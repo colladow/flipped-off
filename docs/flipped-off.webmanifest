@@ -1,12 +1,14 @@
 {
   "background_color": "#6400e3",
-  "description": "A simple index card application.",
-  "display": "fullscreen",
-  "icons": [{
-    "src": "/flipped-off/logo.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }],
+  "description": "A simple flash card application.",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/flipped-off/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
   "name": "Flipped Off",
   "short_name": "Flip O",
   "start_url": "/flipped-off/index.html"
