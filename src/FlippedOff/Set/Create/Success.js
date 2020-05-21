@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import Check from 'icons/checkmark.svg';
+import SuccessIcon from 'icons/success.svg';
 
-const SIZE = 200;
+const SIZE = 140;
 
 const fade = keyframes`
   from {
@@ -33,7 +33,7 @@ const Container = styled.div`
 
 const Success = () => (
   <Container>
-    <Check width={SIZE} height={SIZE} viewBox="0 0 36 36" />
+    <SuccessIcon width={SIZE} height={SIZE} viewBox="0 0 30 30" />
   </Container>
 );
 
