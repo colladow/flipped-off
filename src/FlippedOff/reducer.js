@@ -92,6 +92,7 @@ const setReducerFns = {
         ...set,
         name: name,
       },
+      ...sets.slice(setId + 1),
     ];
   },
 
