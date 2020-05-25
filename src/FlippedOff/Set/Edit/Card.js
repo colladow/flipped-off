@@ -8,9 +8,9 @@ import Header, { Left, Title } from 'components/Header';
 import EditCard from 'components/Card/Edit';
 import Close from 'icons/close.svg';
 import handleEnterPress from 'handleEnterPress';
+import getFontSize, { LIMIT } from 'getFontSize';
 
 const SIDES = ['side1', 'side2'];
-const LIMIT = 30;
 
 function Card({
   set,
@@ -67,6 +67,7 @@ function Card({
           >
             <Input
               type="text"
+              fontSize={getFontSize(card[side].text.length)}
               autoFocus={side === 'side1'}
               ref={side === 'side2' ? side2 : null}
               value={card[side].text}

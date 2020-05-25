@@ -18,6 +18,20 @@ const Input = styled(BaseInput)`
   text-overflow: ellipsis;
 `;
 
+function getFontSize(length) {
+  if (length < 35) {
+    return;
+  }
+
+  if (length >= 35 && length < 60) {
+    return 16;
+  }
+
+  if (length >= 60 && length <= 100) {
+    return 12;
+  }
+}
+
 function Set({
   set,
   setId,
@@ -85,7 +99,7 @@ function Set({
                 }
               }}
             >
-              <Text>{card.side1.text}</Text>
+              <Text fontSize={getFontSize(card.side1.text.length)}>{card.side1.text}</Text>
             </Box>
           ))}
           <Box

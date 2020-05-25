@@ -41,7 +41,6 @@ const SetName = ({
           footer={`${length}/${LIMIT}`}
         >
           <TextArea
-            type="text"
             ref={input}
             value={name}
             onChange={e => {

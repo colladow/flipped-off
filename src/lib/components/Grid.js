@@ -20,6 +20,7 @@ export const Box = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
 
   &:nth-child(3n) {
     margin-right: 0;
