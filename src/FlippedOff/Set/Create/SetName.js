@@ -23,6 +23,12 @@ const SetName = ({
 
   useEffect(() => input.current.focus(), []);
 
+  const submitName = () => {
+    if (length > 0) {
+      onNextClick();
+    }
+  };
+
   return (
     <Screen>
       <Header>
@@ -45,13 +51,13 @@ const SetName = ({
                 onNameChange(e.target.value)
               }
             }}
-            onKeyPress={handleEnterPress(onNextClick)}
+            onKeyPress={handleEnterPress(submitName)}
           />
         </EditCard>
       </Content>
 
       <Footer>
-        <Button onClick={onNextClick}>
+        <Button onClick={submitName}>
           Next
         </Button>
       </Footer>

@@ -2,7 +2,7 @@
   "background_color": "#6400e3",
   "theme_color": "#6400e3",
   "description": "A simple flash card application.",
-  "display": "fullscreen",
+  "display": "standalone",
   "icons": [
     {
       "src": "/flipped-off/logo.png",
@@ -16,7 +16,7 @@
     }
   ],
   "name": "Flipped Off",
-  "short_name": "Flip O",
+  "short_name": "Flipped",
   "start_url": "index.html",
   "prefer_related_applications": false,
   "related_applications": []

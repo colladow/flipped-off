@@ -36,6 +36,10 @@ const Set = styled(Box)`
   background-color: ${props => props.theme.color.base};
 `;
 
+const BoxText = styled(Heading)`
+  font-size: ${props => props.theme.font.medium}px;
+`;
+
 function Menu({ sets }) {
   const history = useHistory();
 
@@ -50,7 +54,7 @@ function Menu({ sets }) {
           key={index}
           onClick={() => history.push(`/sets/${index}`)}
         >
-          <Heading color="white">{set.name}</Heading>
+          <BoxText color="white">{set.name}</BoxText>
         </Set>
       ))}
     </Container>

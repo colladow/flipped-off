@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -38,6 +38,7 @@ function AddCard({
   });
   const side1 = useRef(null);
   const side2 = useRef(null);
+  let toastTimeout;
 
   const updateSide = (c, side, changes) => updateCard({
     ...c,
@@ -47,6 +48,14 @@ function AddCard({
     },
   })
 
+  useEffect(() => {
+    return () => {
+      if (toastTimeout) {
+        window.clearTimeout(toastTimeout);
+      }
+    };
+  });
+
   const submitCard = () => {
     onCardAdd(card);
     updateCard({
@@ -55,7 +64,7 @@ function AddCard({
     setShowSuccess(true);
     side1.current.focus();
 
-    window.setTimeout(() => setShowSuccess(false), toastDuration);
+    toastTimeout = window.setTimeout(() => setShowSuccess(false), toastDuration);
   };
 
   return (

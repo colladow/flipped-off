@@ -48,6 +48,7 @@ function Edit({
         <ImageInput
           autoFocus
           type="url"
+          placeholder="Paste image url..."
           value={imageUrl}
           onChange={onImageUrlChange}
         />

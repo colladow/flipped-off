@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Button, { SmallButton } from 'components/base/Button';
 import BaseInput from 'components/base/Input';
 import Text from 'components/base/Text';
-import Screen, { Content, Footer } from 'components/Screen';
+import Screen, { PaddedContent, FixedFooter } from 'components/Screen';
 import Header, { Left, Right, Title } from 'components/Header';
 import Grid, { Box } from 'components/Grid';
 import Close from 'icons/close.svg';
@@ -67,7 +67,7 @@ function Set({
         </Right>
       </Header>
 
-      <Content footerButtons={selectMode ? 2 : 1}>
+      <PaddedContent footerButtons={selectMode ? 2 : 1}>
         <Grid>
           {set.cards.map((card, index) => (
             <Box
@@ -95,9 +95,9 @@ function Set({
             <Text color="white">Add Card +</Text>
           </Box>
         </Grid>
-      </Content>
+      </PaddedContent>
 
-      <Footer>
+      <FixedFooter>
         {selectMode && (
           <Button
             onClick={() => {
@@ -110,7 +110,7 @@ function Set({
           </Button>
         )}
         <Button onClick={onDeleteSet}>Delete Set</Button>
-      </Footer>
+      </FixedFooter>
     </Screen>
   );
 }

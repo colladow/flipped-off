@@ -7,7 +7,7 @@ const Controls = styled.div`
   position: absolute;
   top: 80%;
   right: ${props => props.theme.margin / 2}px;
-  width: 25vw;
+  width: 30vw;
   z-index: 103;
   box-sizing: border-box;
   padding: ${props => props.theme.margin}px;
