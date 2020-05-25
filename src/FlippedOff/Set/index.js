@@ -60,6 +60,8 @@ function Set({ sets }) {
     scrollBreakpoint = progressBar.current.getBoundingClientRect().top;
 
     window.addEventListener('scroll', handleScroll);
+    // iOS Safari doesn't reset scroll when coming from the home screen
+    window.scrollTo(0, 0);
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
