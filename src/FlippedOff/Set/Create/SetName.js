@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Button from 'components/base/Button';
 import TextArea from 'components/base/TextArea';
-import Screen, { Content, Footer } from 'components/Screen';
+import Screen, { PaddedContent, FixedFooter } from 'components/Screen';
 import Header, { Left } from 'components/Header';
 import EditCard from 'components/Card/Edit';
 import Close from 'icons/close.svg';
@@ -35,7 +35,7 @@ const SetName = ({
         <Left><Link to="/"><Close /></Link></Left>
       </Header>
 
-      <Content>
+      <PaddedContent>
         <EditCard
           title="Name your set"
           footer={`${length}/${LIMIT}`}
@@ -54,13 +54,13 @@ const SetName = ({
             onKeyPress={handleEnterPress(submitName)}
           />
         </EditCard>
-      </Content>
+      </PaddedContent>
 
-      <Footer>
+      <FixedFooter>
         <Button onClick={submitName}>
           Next
         </Button>
-      </Footer>
+      </FixedFooter>
     </Screen>
   );
 };

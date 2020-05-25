@@ -29,7 +29,8 @@ function shuffle(cards) {
 
 function Set({ sets }) {
   const [showMenu, setShowMenu] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // start with null to avoid scrolling on mount
+  const [currentIndex, setCurrentIndex] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [managed, setManaged] = useState([]);
   const [forceFlip, setForceFlip] = useState(false);
@@ -116,13 +117,17 @@ function Set({ sets }) {
           preventDefaultTouchmoveEvent
           trackMouse={true}
           onSwipedUp={() => {
-            const next = currentIndex + 1;
+            const next = currentIndex === null ? 1 : currentIndex + 1;
 
             if (next < size) {
               setCurrentIndex(next);
             }
           }}
           onSwipedDown={() => {
+            if (currentIndex === null) {
+              return;
+            }
+
             const next = currentIndex - 1;
 
             if (next >= 0) {

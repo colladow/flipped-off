@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Input from 'components/base/Input';
 import Button from 'components/base/Button';
-import Screen, { Content, Footer } from 'components/Screen';
+import Screen, { PaddedContent, FixedFooter } from 'components/Screen';
 import Header, { Left, Title } from 'components/Header';
 import EditCard from 'components/Card/Edit';
 import Close from 'icons/close.svg';
@@ -52,7 +52,7 @@ function Card({
         <Title>{set.name}</Title>
       </Header>
 
-      <Content footerButtons={1}>
+      <PaddedContent>
         {SIDES.map((side, index) => (
           <EditCard
             small
@@ -89,11 +89,11 @@ function Card({
             />
           </EditCard>
         ))}
-      </Content>
+      </PaddedContent>
 
-      <Footer>
+      <FixedFooter>
         <Button onClick={submitCard}>Save</Button>
-      </Footer>
+      </FixedFooter>
     </Screen>
   );
 }

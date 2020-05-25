@@ -67,7 +67,7 @@ function Set({
         </Right>
       </Header>
 
-      <PaddedContent footerButtons={selectMode ? 2 : 1}>
+      <PaddedContent>
         <Grid>
           {set.cards.map((card, index) => (
             <Box

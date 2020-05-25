@@ -33,6 +33,10 @@ export const Footer = styled.section`
 
 export const PaddedContent = styled(Content)`
   padding-bottom: 12vh;
+
+  @media all and (max-height: 800px) {
+    padding-bottom: 20vh;
+  }
 `;
 
 export const FixedFooter = styled(Footer)`

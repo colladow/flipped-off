@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Input from 'components/base/Input';
 import Button, { SmallButton } from 'components/base/Button';
-import Screen, { Content, Footer } from 'components/Screen';
+import Screen, { PaddedContent, FixedFooter } from 'components/Screen';
 import Header, { Left, Right, Title } from 'components/Header';
 import EditCard from 'components/Card/Edit';
 import Close from 'icons/close.svg';
@@ -49,12 +49,14 @@ function AddCard({
   })
 
   useEffect(() => {
+    toastTimeout = window.setTimeout(() => setShowSuccess(false), toastDuration - 100);
+
     return () => {
       if (toastTimeout) {
         window.clearTimeout(toastTimeout);
       }
     };
-  });
+  }, [showSuccess]);
 
   const submitCard = () => {
     onCardAdd(card);
@@ -63,8 +65,6 @@ function AddCard({
     });
     setShowSuccess(true);
     side1.current.focus();
-
-    toastTimeout = window.setTimeout(() => setShowSuccess(false), toastDuration);
   };
 
   return (
@@ -79,7 +79,7 @@ function AddCard({
         </Right>
       </Header>
 
-      <Content footerButtons={1}>
+      <PaddedContent>
         {SIDES.map((side, index) => (
           <EditCard
             small
@@ -116,13 +116,13 @@ function AddCard({
             />
           </EditCard>
         ))}
-      </Content>
+      </PaddedContent>
 
-      <Footer>
+      <FixedFooter>
         <Button onClick={submitCard}>
           Save &amp; Add Next Card
         </Button>
-      </Footer>
+      </FixedFooter>
 
       {showSuccess && <Success />}
     </Screen>
