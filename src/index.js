@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import smoothscroll from 'smoothscroll-polyfill';
 
 import FlippedOff from './FlippedOff';
+
+smoothscroll.polyfill();
 
 ReactDOM.render(<FlippedOff />, document.querySelector('#render'));
 
